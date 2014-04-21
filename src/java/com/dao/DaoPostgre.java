@@ -7,9 +7,9 @@ import java.util.ArrayList;
 public class DaoPostgre {
     static Connection laConnexion = null;
     static ResultSet result       = null;
-    static final String URL    = "jdbc:postgresql://192.168.12.101:5432/aero";
-    static final String USER   = "michel";
-    static final String PASSWD = "michel42";
+    static final String URL    = "jdbc:mysql://90.18.150.223:3306/aerogrp1";
+    static final String USER   = "test";
+    static final String PASSWD = "test";
     
     static {
         try {
@@ -24,7 +24,7 @@ public class DaoPostgre {
         result = null;
         
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
             
@@ -71,7 +71,7 @@ public class DaoPostgre {
     static public ResultSet getInfosUser(String name){
         result = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
                 
@@ -90,7 +90,7 @@ public class DaoPostgre {
     static public ResultSet getMembre2(Integer num_membre){
         result = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
                 
@@ -112,7 +112,7 @@ public class DaoPostgre {
     static public ResultSet updateMembre2(Integer num_membre, ArrayList<String> memb){
         result = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
                 
@@ -146,7 +146,7 @@ public class DaoPostgre {
     static public ResultSet getComptes(Integer num_membre){
         result = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
             }
@@ -175,7 +175,7 @@ public class DaoPostgre {
     static public ResultSet getSeqVol(Integer num_membre){
         result = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
                 
@@ -197,7 +197,7 @@ public class DaoPostgre {
     static public ResultSet getInstructeur(String name){
         result = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
                 
@@ -218,7 +218,7 @@ public class DaoPostgre {
     static public ResultSet getAvion(Integer num_avion){
         result = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
                 

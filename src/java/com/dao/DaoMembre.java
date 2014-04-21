@@ -19,9 +19,9 @@ public class DaoMembre {
     
     static Connection laConnexion = null;
     static ResultSet result       = null;
-    static final String URL    = "jdbc:postgresql://192.168.12.101:5432/aero";
-    static final String USER   = "michel";
-    static final String PASSWD = "michel42";
+    static final String URL    = "jdbc:mysql://90.18.150.223:3306/aerogrp1";
+    static final String USER   = "test";
+    static final String PASSWD = "test";
     
     static {
         try {
@@ -35,7 +35,7 @@ public class DaoMembre {
     static public ResultSet toutlesMembres(){
         result = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
                 
@@ -57,7 +57,7 @@ public class DaoMembre {
     static public ResultSet getMembre(String nom_membre, String pre_membre){
         result = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
                 
