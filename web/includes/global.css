@@ -1,0 +1,113 @@
+/* 
+    Document   : global
+    Created on : 19 déc. 2013, 14:36:54
+    Author     : nicolas.pendon
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../images/imageA.png);
+}
+
+div.global {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.header {
+    height: 75px;
+    text-align: center;
+    border: 2px black solid;
+    margin-bottom: 40px;
+}
+
+div.menuGauche {
+    width: 130px;
+    height: 500px;
+    float: left;
+    border: 2px black solid;
+}
+
+div.menuGauche INPUT {
+    margin-left:5px;
+    width:120px;
+    height:30px
+}
+
+div.contenu {
+    float: right;
+    min-height: 500px;
+    width: 1050px;
+    border: 2px black solid;
+    background-color: white;
+    opacity: 0.85;
+}
+
+div.footer {
+    height: 40px;
+    text-align: center;
+    border: 2px black solid;
+    clear: both;
+}
+
+div.membreForm {
+    width: 500px;
+    margin-left: auto;
+    margin-right:auto;
+    border: 2px black solid;
+}
+
+div.contenu#index div {
+    height: 220px;
+    
+    border: solid 2px black;
+    margin: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+div.contenu#index div#index-co {
+    float: left; 
+    width: 198px;
+    padding-left: 2px;
+}
+
+div.contenu#index div#index-tweeter {
+    float: right;
+    width: 200px;
+}
+
+div.contenu#index div#index-info {
+    margin-left: auto;
+    margin-right: auto;
+    width: 575px
+}
+
+div.contenu#index div#index-select {
+    clear : both;
+}
+
+div.contenu#index div#index-co {
+    
+}
+
+div.table{
+    margin-top: 25px;
+    margin-left: 25px;
+    background-color: white;
+    text-align: center;
+}
+
+div.table table{
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+div.table th, div.table td{
+    border: 1px solid black;
+}
+
+
