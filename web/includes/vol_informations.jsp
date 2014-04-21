@@ -18,37 +18,61 @@ if(vol == null) {
 en date du <%= vol.getDate() %>
 <BR/>
 <BR/>
-<TABLE>
+<TABLE style='margin-left: auto; margin-right: auto; text-align: left; width: 800px;'>
     <TR>
         <TD>
-            Temps passé en vol : <%= vol.getTemps() %>
+            Temps passé en vol : 
         </TD>
         <TD>
-            Prix à l'heure : <%= vol.getTaux() %>
+            <%= vol.getTemps() %> heure(s)
+        </TD>
+        <TD>
+            dont comprises dans un forfait : 
+        </TD>
+        <TD>
+            <%= vol.getHeuresForfait() %> heure(s)
         </TD>
     </TR>
     <TR>
         <TD>
-            dont comprises dans un forfait : <%= vol.getHeuresForfait() %>
+            Prix à l'heure : 
         </TD>
         <TD>
-            Réduction à l'heure : <%= vol.getReductionSemaine() %>
-        </TD>
-    </TR>
-    <TR>
-        <TD>
-            Prix spécial : <%= (vol.getPrixSpecial() < 0 ? "Aucun" : vol.getPrixSpecial()) %>
+            <%= vol.getTaux() %> €/h
         </TD>
         <TD>
-            Motif : <%= vol.getMotif() %>
+            Réduction à l'heure : 
+        </TD>
+        <TD>
+            <%= vol.getReductionSemaine() %> €/h
         </TD>
     </TR>
     <TR>
         <TD>
-            Instructeur n° : <%= vol.getNumInstructeur() %>
+            Prix spécial : 
         </TD>
         <TD>
-            Prix à l'heure : <%= vol.getTauxInstructeur() %>
+            <%= (vol.getPrixSpecial() < 0 ? "Aucun" : vol.getPrixSpecial()) %>
+        </TD>
+        <TD>
+            Motif : 
+        </TD>
+        <TD>
+            <%= vol.getMotif() %>
+        </TD>
+    </TR>
+    <TR>
+        <TD>
+            Instructeur n° : 
+        </TD>
+        <TD>
+            <%= vol.getNumInstructeur() %>
+        </TD>
+        <TD>
+            Prix à l'heure : 
+        </TD>
+        <TD>
+            <%= vol.getTauxInstructeur() %> €/h
         </TD>
     </TR>
 </TABLE>

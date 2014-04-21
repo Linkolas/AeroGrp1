@@ -66,6 +66,7 @@ public class ServiceVol {
             vol.setNumMembre(result.getInt("num_membre"));
             vol.setNumInstructeur(result.getInt("num_instructeur"));
             vol.setNumAvion(result.getInt("num_avion"));
+            //vol.setMembre(null);
             
         } catch (SQLException ex) {
             Logger.getLogger(ServiceVol.class.getName()).log(Level.SEVERE, null, ex);
