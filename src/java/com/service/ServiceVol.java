@@ -45,4 +45,32 @@ public class ServiceVol {
         return vols;
     }
     
+    static public Vol getVol(int numseq) {
+        Vol vol = new Vol();
+        
+        try {
+            
+            ResultSet result = DaoVol.getSeqVol(numseq);
+            result.next();
+            
+            vol.setNum(result.getInt("num_seq"));
+            vol.setDate(result.getDate("date_seq_vol"));
+            vol.setTemps(result.getInt("temps"));
+            vol.setHeuresForfait(result.getInt("heures_forfait"));
+            vol.setPrixSpecial(result.getFloat("prix_special"));
+            vol.setTaux(result.getFloat("taux"));
+            vol.setReductionSemaine(result.getFloat("reduction_semaine"));
+            vol.setMotif(result.getString("motif"));
+            vol.setTauxInstructeur(result.getFloat("taux_instructeur"));
+            vol.setForfaitInitiation(result.getInt("forfait_initiation"));
+            vol.setNumMembre(result.getInt("num_membre"));
+            vol.setNumInstructeur(result.getInt("num_instructeur"));
+            vol.setNumAvion(result.getInt("num_avion"));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceVol.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return vol;
+    }
 }

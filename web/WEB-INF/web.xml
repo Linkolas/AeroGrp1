@@ -24,6 +24,10 @@
         <servlet-name>ServletMembre</servlet-name>
         <servlet-class>com.servlet.ServletMembre</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletVolsInfosSeq</servlet-name>
+        <servlet-class>com.servlet.ServletVolsInfosSeq</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ServletMembre</servlet-name>
         <url-pattern>/Membres</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletVolsInfosSeq</servlet-name>
+        <url-pattern>/InfosSeqVol</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

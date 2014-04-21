@@ -28,10 +28,9 @@ public class DaoVol {
         try {
             laConnexion = AccesBDD.getConnexion();
             
-            String query;
-            query = "SELECT * "
-                   +"FROM seq_vol " 
-                   +"WHERE num_membre = ?";
+            String query = "SELECT * "
+                          +"FROM seq_vol " 
+                          +"WHERE num_membre = ?";
             if(annee != -1) query += " AND YEAR(date_seq_vol) = ?";
             
             PreparedStatement instructionSql = laConnexion.prepareStatement(query);
@@ -39,6 +38,24 @@ public class DaoVol {
             if(annee != -1) instructionSql.setInt(2, annee);
             result = instructionSql.executeQuery();
         } catch(SQLException e) {
+            System.out.println(e);
+        }
+        
+        return result;
+    }
+    
+    public static ResultSet getSeqVol(int numseq) {
+        ResultSet result = null;
+        
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query = "SELECT * FROM seq_vol WHERE Num_Seq = ?";
+            PreparedStatement requete = laConnexion.prepareStatement(query);
+            requete.setInt(1, numseq);
+            
+            result = requete.executeQuery();
+        } catch (SQLException e) {
             System.out.println(e);
         }
         

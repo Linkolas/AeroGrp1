@@ -28,7 +28,7 @@
             
             <!-- Contenu de la page -->
             <DIV class="contenu">
-                <table>
+                <table style="width: 1000px;">
                     <tr>
                         <td style='width: 150px; height: 89px; text-align: center;'>
                             Trier par date<BR/>
@@ -38,7 +38,7 @@
                                     int annee = Calendar.getInstance().get(Calendar.YEAR);
                                     for(int i = (annee +2); i > 2005 ; i--) { 
                                 %>
-                                <OPTION<% if(request.getParameter("annee") != null && Integer.parseInt(request.getParameter("annee")) == i) out.println(" SELECTED"); %>><%= i %></OPTION>
+                                <OPTION><%= i %></OPTION>
                                 <%
                                     }
                                 %>
@@ -54,9 +54,9 @@
                                 %>
                             </SELECT>
                         </td>
-                        <td rowspan=2 style='border-left: 1px black solid;'>
+                        <td rowspan=2 style='border-left: 1px black solid; text-align: center;' id="affichage">
                             
-                            Informations concernant la personne sélectionnée
+                            <jsp:include page="includes/vol_informations.jsp"/>
                             
                         </td>
                     </tr>
