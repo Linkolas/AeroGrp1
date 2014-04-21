@@ -6,6 +6,7 @@ package com.service;
 
 import com.dao.DaoMembre;
 import com.domaine.Membre;
+import static java.lang.System.out;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,17 +22,18 @@ public class ServiceMembre {
         List<Membre> lmemb = new ArrayList<Membre>();
         
         try{
+            out.println("michel est rentré");
             ResultSet result = DaoMembre.toutlesMembres();
             while(result.next()) {   
                 Membre memb = new Membre();
                 memb.setNom(result.getString("nom"));
-                memb.setNom(result.getString("prenom"));
+                memb.setPrenom(result.getString("prenom"));
                 lmemb.add(memb);
                 
             }
         }
         catch(SQLException se){
-            
+            out.println("michel est malade");
         }
         DaoMembre.close();
         

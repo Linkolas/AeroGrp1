@@ -298,10 +298,4 @@ public class Membre {
     public void setNum_qualif(int num_qualif) {
         this.num_qualif = num_qualif;
     }
-    
-    
-    
-    
-    
-    
 }
