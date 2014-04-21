@@ -20,12 +20,12 @@ import java.util.logging.Logger;
 public class ServiceVol {
     
     static public List<Vol> getListeVols(int membre) {
-        System.out.println("/! ANNEE NON PASSEE EN PARAMETRE");
+        //System.out.println("/! ANNEE NON PASSEE EN PARAMETRE");
         return getListeVols(membre, -1);
     }
     
     static public List<Vol> getListeVols(int membre, int annee) {
-        System.out.println("/! MEMBRE = " + membre);
+        //System.out.println("/! MEMBRE = " + membre);
         List<Vol> vols = new ArrayList<Vol>();
         
         try {

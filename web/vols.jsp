@@ -32,7 +32,7 @@
                     <tr>
                         <td style='width: 150px; height: 89px; text-align: center;'>
                             Trier par date<BR/>
-                            <SELECT name='annee' size='1' onChange="selectAnnee(this.value);">
+                            <SELECT id="annee" name='annee' size='1' onChange="triVols();">
                                 <OPTION value='*'>Tous</OPTION>
                                 <% 
                                     int annee = Calendar.getInstance().get(Calendar.YEAR);
@@ -43,12 +43,12 @@
                                     }
                                 %>
                             </SELECT>
-                            <SELECT name="mois" size="1" onChange="selectMois(this.value);">
+                            <SELECT id="mois" name="mois" size="1" onChange="triVols();">
                                 <OPTION value="*">Tous</TOUS>
                                 <% 
                                     for(int i=1; i<13; i++) {
                                 %>
-                                <OPTION><%= i %></OPTION>
+                                <OPTION><%= (i<10 ? "0"+i : i) %></OPTION>
                                 <%
                                     }
                                 %>
@@ -62,18 +62,16 @@
                     </tr>
                     <tr>
                         <td style='width: 150px; height: 400px; border-top: 1px black solid;'>
-                            <FORM>
-                                <SELECT size="24" style="width: 150px; height: 395px;" onChange="selectVol(this.value);">
-                                    <% 
-                                        List<Vol> vols = (ArrayList<Vol>) request.getAttribute("listeVols");
-                                        for(Vol vol : vols) {
-                                    %>
-                                    <OPTION value="<%= vol.getNum() %>"><%= vol %></OPTION>
-                                    <%
-                                        }
-                                    %>
-                                </SELECT>
-                            </FORM>
+                            <SELECT id="vols" name="vols" size="24" style="width: 150px; height: 395px;" onChange="selectVol(this.value);">
+                                <% 
+                                    List<Vol> vols = (ArrayList<Vol>) request.getAttribute("listeVols");
+                                    for(Vol vol : vols) {
+                                %>
+                                <OPTION value="<%= vol.getNum() %>"><%= vol %></OPTION>
+                                <%
+                                    }
+                                %>
+                            </SELECT>
                         </td>
                     </tr>
                 </table>

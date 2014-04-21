@@ -38,7 +38,7 @@ public class DaoVol {
             instructionSql.setInt(1, membre);
             if(annee != -1) instructionSql.setInt(2, annee);
             result = instructionSql.executeQuery();
-        } catch(Exception e) {
+        } catch(SQLException e) {
             System.out.println(e);
         }
         
