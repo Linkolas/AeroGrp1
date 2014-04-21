@@ -4,7 +4,6 @@
  */
 package com.dao;
 
-import static com.dao.DaoPostgre.result;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -38,15 +37,19 @@ public class DaoMembre {
             Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
-                
-            String query;
-            query = "SELECT nom, prenom "
-                   +"FROM membres "; 
-                 //+"WHERE num_membre = ? ";
-            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
-          //instructionSql.setInt(1,num_membre);
-            result = instructionSql.executeQuery();
-            return result;
+               try { 
+                    String query;
+                    query = "SELECT nom, prenom "
+                           +"FROM membres "; 
+                         //+"WHERE num_membre = ? ";
+                    PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+                  //instructionSql.setInt(1,num_membre);
+                    result = instructionSql.executeQuery();
+                    return result;
+               }
+               catch(Exception e) {
+                       System.out.println(e);
+               }
             }
         catch(Exception e) {
                 System.out.println(e);

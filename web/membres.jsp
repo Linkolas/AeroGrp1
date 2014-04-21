@@ -76,7 +76,7 @@
                                     <% 
                                     List<Membre> nomsMembres = (ArrayList<Membre>) request.getAttribute("nomsMembres");
                                     for(Membre membrre : nomsMembres) { %>
-                                    <OPTION><%= membrre.getNom() %></OPTION>
+                                    <OPTION><%= membrre.getNom() +" "+ membrre.getPrenom() %></OPTION>
                                  <% } %>
                                 </SELECT>
                             </FORM>
