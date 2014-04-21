@@ -33,7 +33,7 @@
                         <td style='width: 150px; height: 89px; text-align: center;'>
                             Trier par date<BR/>
                             <SELECT id="annee" name='annee' size='1' onChange="triVols();">
-                                <OPTION value='*'>Tous</OPTION>
+                                <OPTION value='*'>Année</OPTION>
                                 <% 
                                     int annee = Calendar.getInstance().get(Calendar.YEAR);
                                     for(int i = (annee +2); i > 2005 ; i--) { 
@@ -44,7 +44,7 @@
                                 %>
                             </SELECT>
                             <SELECT id="mois" name="mois" size="1" onChange="triVols();">
-                                <OPTION value="*">Tous</TOUS>
+                                <OPTION value="*">Mois</TOUS>
                                 <% 
                                     for(int i=1; i<13; i++) {
                                 %>
