@@ -7,6 +7,7 @@ package com.servlet;
 import com.service.ServiceProfil;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -51,9 +52,6 @@ public class ServletProfil extends HttpServlet {
                   
                  if("1".equals(request.getParameter("modificationProfil")))
                   {
-                      System.out.println(request.getParameterMap());
-                      //Utilisation d'un MAP
-                     /*String sessionNumMembre = (String) session.getAttribute("numMembre"); 
                      ArrayList<String> tableauInfos = new ArrayList();
                      tableauInfos.add(request.getParameter("badge"));
                      tableauInfos.add(request.getParameter("nom"));
@@ -68,12 +66,7 @@ public class ServletProfil extends HttpServlet {
                      tableauInfos.add(request.getParameter("date_naiss"));
                      tableauInfos.add(request.getParameter("lieu_naiss"));
                      tableauInfos.add(request.getParameter("carte_fed"));
-                     conn.updateMembre2(Integer.parseInt(sessionNumMembre), tableauInfos);*/
-                      Map mapInfos = new HashMap<Integer, String>();
-                      mapInfos = request.getParameterMap();
-                      //System.out.println(mapInfos.get(1));
-                      conn.updateMembre2(Integer.parseInt(sessionNumMembre), mapInfos);
-                    
+                     conn.updateMembre2(Integer.parseInt(sessionNumMembre), tableauInfos);
                   }
                   else
                   {
