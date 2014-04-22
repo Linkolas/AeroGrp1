@@ -21,7 +21,6 @@ public class OperationCompte {
     
     public OperationCompte(){
         
-        
     }
     
      public OperationCompte(int numOp, Date dateOp, float valeurOp, String com){
@@ -46,72 +45,52 @@ public class OperationCompte {
         
     }
     
-    
-
     public void setNumOperation(int value){
-        
         numOperation = value;
     }
     
     public void setDateOperation(Date value){
-        
         dateOperation = value;
     }
     
     public void setValeurOperation(float value){
-        
         valeurOperation = value;
     }
     
     public void setCommentaire(String value){
-        
         commentaire = value;
     }
     
-    public void setAutocreation(Boolean value){
-        
+    public void setAutocreation(boolean value){
         autocreation = value;
-        
     }
     
-    
     public void setNumSeq(int value){
-        
         numSeq = value;
-        
     }
     
     
     public int getNumOperation(){
-        
         return numOperation;
     }
     
     public Date getDateOperation(){
-        
         return dateOperation;
     }
     
     public float getValeurOperation(){
-        
        return valeurOperation;
     }
     
     public String getCommentaire(){
-        
        return commentaire;
     }
     
     public boolean getAutocreation(){
-        
         return autocreation;
-        
     }
     
-    
     public int getNumSeq(){
-        
         return numSeq;
-        
     }
 }

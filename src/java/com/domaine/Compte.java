@@ -18,25 +18,21 @@ public class Compte {
     List<OperationCompte> operations;
     
     
-    public Compte(){
+    public Compte() {
         operations = new ArrayList();
- 
     }
     
-        public Compte(int numMembre){
+    public Compte(int numMembre) {
         operations = new ArrayList();
         num_membre = numMembre;
-        
     }
     
     
-    public void setNumMembre(int value){
-        
-        
+    public void setNumMembre(int value) {
+        num_membre = value;
     }
     
     public int getNumMembre(){
-     
         return num_membre;
     }
     
@@ -44,9 +40,11 @@ public class Compte {
         return operations;
     }
     
+    public void setListOperations(List<OperationCompte> liste) {
+        operations = liste;
+    }
+    
     public void addOperation(OperationCompte value){
         operations.add(value);
     }
-    
-    
 }
