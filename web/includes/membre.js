@@ -7,7 +7,7 @@ function triMembres() {
         option = select.options[i];
         lettreOpt = option.text.substring(0,1);
         
-        if(lettre === lettreOpt) {
+        if(lettre === lettreOpt || lettre === "*") {
             option.style.display = "";
         } else {
             option.style.display = "none";
