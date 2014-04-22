@@ -4,10 +4,10 @@
  */
 package com.servlet;
 
+import com.domaine.Compte;
+import com.service.ServiceCompte;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,6 +40,9 @@ public class ServletCompte extends HttpServlet {
             vue = "/ErreurConnexion";
         } else {
             vue = "/compte.jsp";
+            String strNum = (String) session.getAttribute("numMembre");
+            Compte compte = ServiceCompte.getCompte(Integer.parseInt(strNum));
+            request.setAttribute("compte", compte);
         }
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);

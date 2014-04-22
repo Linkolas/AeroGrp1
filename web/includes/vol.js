@@ -9,17 +9,19 @@ function triVols() {
         anneeOpt = option.text.substring(0,4);
         moisOpt  = option.text.substring(5,7);
         
+        display = "";
+        
         /* ANNEE */
-        if(annee === anneeOpt || isNaN(annee)) {
-            option.style.display = "";
-        } else {
-            option.style.display = "none";
+        if(annee !== anneeOpt && !isNaN(annee)) {
+            display = "none";
         }
         
         /* MOIS */
         if(mois !== moisOpt && !isNaN(mois)) {
-            option.style.display = "none";
+            display = "none";
         }
+        
+        option.style.display = display;
     }
 }
 
