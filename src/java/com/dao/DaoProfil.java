@@ -40,11 +40,12 @@ public class DaoProfil {
         return result;
     }
     
-   static public ResultSet updateMembre2(Integer num_membre, ArrayList memb){
-        result = null;
+   static public void updateMembre2(Integer num_membre, ArrayList memb){
+       
         try {
             laConnexion = AccesBDD.getConnexion();
             ArrayList nom = new ArrayList();
+            nom.add("num_badge");
             nom.add("nom");
             nom.add("prenom");
             nom.add("adresse");
@@ -86,13 +87,13 @@ public class DaoProfil {
                 }
             }
             
-            result = instructionSql.executeQuery();
-            return result;
+            instructionSql.setInt(index, num_membre);
+            instructionSql.executeUpdate();
+            
             }
         catch(Exception e) {
                 System.out.println(e);
             }
-        return result;
     }
     
         public static void close() {
