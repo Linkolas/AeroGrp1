@@ -29,6 +29,7 @@ public class ServiceAvion {
                 Avion avion = new Avion();
                 avion.setNum_avion(result.getInt("num_avion"));
                 avion.setType_avion(result.getString("type_avion"));
+                avion.setTaux(result.getFloat("taux"));
                 avion.setForfait1(result.getFloat("forfait1"));
                 avion.setForfait2(result.getFloat("forfait2"));
                 avion.setForfait3(result.getFloat("forfait3"));
@@ -58,6 +59,7 @@ public class ServiceAvion {
             
             avion.setNum_avion(result.getInt("num_avion"));
             avion.setType_avion(result.getString("type_avion"));
+            avion.setTaux(result.getFloat("taux"));
             avion.setForfait1(result.getFloat("forfait1"));
             avion.setForfait2(result.getFloat("forfait2"));
             avion.setForfait3(result.getFloat("forfait3"));
