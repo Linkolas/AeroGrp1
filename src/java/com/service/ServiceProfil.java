@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Map;
+import javax.lang.model.element.NestingKind;
 
 /**
  *
@@ -46,7 +47,7 @@ public class ServiceProfil {
     }
     
     public void updateMembre2(Integer prmNumMembre, ArrayList prmMemb) {
-           
+        boolean bool = false;
          for(int i = 0; i < prmMemb.size(); i++)
          {
             if(prmMemb.get(i) == "") {
@@ -66,9 +67,19 @@ public class ServiceProfil {
                 }
             }
            
-           DaoProfil.updateMembre2(prmNumMembre, prmMemb);
-           DaoProfil.close();
-        }
+           for(int i = 0; i < prmMemb.size(); i++) 
+           {
+               if(prmMemb.get(i) != null) {
+                bool = true;
+               }
+           }
+           if(bool == true) {
+            DaoProfil.updateMembre2(prmNumMembre, prmMemb);
+            DaoProfil.close();    
+           }
+           
+    }
+       
         
                 
 
