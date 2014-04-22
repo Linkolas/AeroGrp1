@@ -46,10 +46,7 @@ public class ServiceProfil {
     }
     
     public void updateMembre2(Integer prmNumMembre, ArrayList prmMemb) {
-        
-
-        
-      
+           
          for(int i = 0; i < prmMemb.size(); i++)
          {
             if(prmMemb.get(i) == "") {
@@ -68,7 +65,8 @@ public class ServiceProfil {
                     prmMemb.set(10, newDate);
                 }
             }
-           ResultSet result = DaoProfil.updateMembre2(prmNumMembre, prmMemb);
+           
+           DaoProfil.updateMembre2(prmNumMembre, prmMemb);
            DaoProfil.close();
         }
         
