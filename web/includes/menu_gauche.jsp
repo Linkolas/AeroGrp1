@@ -15,7 +15,8 @@
     <input style="margin-top: 15px;" type="button" value="Profil"  name="Profil"  onclick="self.location.href='<%= relatif %>Profil';"  />
     <input style="margin-top: 15px;" type="button" value="Compte"  name="Compte"  onclick="self.location.href='<%= relatif %>Compte';"  />
     <input style="margin-top: 15px;" type="button" value="Vols"    name="Vols"    onclick="self.location.href='<%= relatif %>Vols';"    />
-    <input style="margin-top: 15px;" type="button" value="Administration"  name="Membre"  onclick="self.location.href='<%= relatif %>Membres';"/>
+    <input style="margin-top: 15px;" type="button" value="Gérer membres"  name="Membre"  onclick="self.location.href='<%= relatif %>Membres';"/>
+    <input style="margin-top: 15px;" type="button" value="Gérer instructeurs"  name="Instructeur"  onclick="self.location.href='<%= relatif %>Instructeurs';"/>
     
-    <input style="margin-top:230px;" type="button" value="Contact" name="Contact" onclick="self.location.href='<%= relatif %>contact.jsp';" />
+    <input style="margin-top:190px;" type="button" value="Contact" name="Contact" onclick="self.location.href='<%= relatif %>contact.jsp';" />
 </div>
