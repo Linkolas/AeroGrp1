@@ -43,14 +43,37 @@ public class DaoProfil {
         result = null;
         try {
             laConnexion = AccesBDD.getConnexion();
+            ArrayList nom = new ArrayList();
+            nom.add("nom");
+            nom.add("prenom");
+            nom.add("adresse");
+            nom.add("code_postal");
+            nom.add("ville");
+            nom.add("tel");
+            nom.add("portable");
+            nom.add("email");
+            nom.add("profession");
+            nom.add("date_naissance");
+            nom.add("lieu_naissance");
+            nom.add("carte_federal");
+            
+            String query = "";
+            String set = "";
+            for(int i = 0; i < memb.size(); i++) {
                 
-            String query;
-            query = "UPDATE membre"
-                    +"SET nom = ?, prenom = ?, adresse = ?, code_postal = ?, ville = ?, tel = ?, portable = ?, email = ?, profession = ?, date_naissance = ?, lieu_naissance = ?, carte_federal = ?"
-                    +"FROM membres WHERE num_membre=?";
-            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
-            System.out.println(memb);
-            for(int i = 0; i < memb.size(); i++)
+                if(!"".equals(memb.get(i))) {
+                set +=",";
+                query += nom.get(i) + " = ? " + set;
+                System.out.println(query); 
+                
+               }
+            }
+            //query = "UPDATE membre"
+                    //+"SET nom = ?, prenom = ?, adresse = ?, code_postal = ?, ville = ?, tel = ?, portable = ?, email = ?, profession = ?, date_naissance = ?, lieu_naissance = ?, carte_federal = ?"
+                  //  +"FROM membres WHERE num_membre=?";
+            //PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            //System.out.println(memb);
+           /* for(int i = 0; i < memb.size(); i++)
             {
                 if(memb.get(i) != null && !"".equals(memb.get(i)) ) {
                     System.out.println("donnée à l'indice " + i + " = " + memb.get(i));
