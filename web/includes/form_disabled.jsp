@@ -13,7 +13,7 @@
         
         <%
             
-            String[] num_membre = (String[]) session.getAttribute("infosMembres");
+            String[] num_membre = (String[]) request.getAttribute("infosMembres");
             
         %>
         
