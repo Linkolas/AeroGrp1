@@ -26,10 +26,10 @@ public class ServiceMembre {
             ResultSet result = DaoMembre.toutlesMembres();
             while(result.next()) {   
                 Membre memb = new Membre();
+                memb.setNum_membre(result.getInt("num_membre"));
                 memb.setNom(result.getString("nom"));
                 memb.setPrenom(result.getString("prenom"));
                 lmemb.add(memb);
-                
             }
         }
         catch(SQLException se){

@@ -39,11 +39,9 @@ public class DaoMembre {
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
                try { 
                     String query;
-                    query = "SELECT nom, prenom "
+                    query = "SELECT * "
                            +"FROM membres "; 
-                         //+"WHERE num_membre = ? ";
                     PreparedStatement instructionSql = laConnexion.prepareStatement(query);
-                  //instructionSql.setInt(1,num_membre);
                     result = instructionSql.executeQuery();
                     return result;
                }
