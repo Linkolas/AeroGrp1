@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="includes/global.css"/>
         <script><jsp:include page="includes/ajax.js"/></script>
+        <script><jsp:include page="includes/membre.js"/></script>
         <title>Affichage des membres de l'aéroclub</title>
     </head>
     <body>
@@ -32,34 +33,34 @@
                             Trier par<BR/>
                             Noms de famille<BR/>
                             <FORM>
-                                <SELECT name='lettre' size='1' onChange="triMembres();">
+                                <SELECT id ="lettre" name='lettre' size='1' onChange="triMembres();">
                                     <OPTION value='*' selected>Tous</OPTION>
-                                    <OPTION value='a'>A</OPTION>
-                                    <OPTION value='b'>B</OPTION>
-                                    <OPTION value='c'>C</OPTION>
-                                    <OPTION value='d'>D</OPTION>
-                                    <OPTION value='e'>E</OPTION>
-                                    <OPTION value='f'>F</OPTION>
-                                    <OPTION value='g'>G</OPTION>
-                                    <OPTION value='h'>H</OPTION>
-                                    <OPTION value='i'>I</OPTION>
-                                    <OPTION value='j'>J</OPTION>
-                                    <OPTION value='k'>K</OPTION>
-                                    <OPTION value='l'>L</OPTION>
-                                    <OPTION value='m'>M</OPTION>
-                                    <OPTION value='n'>N</OPTION>
-                                    <OPTION value='o'>O</OPTION>
-                                    <OPTION value='p'>P</OPTION>
-                                    <OPTION value='q'>Q</OPTION>
-                                    <OPTION value='r'>R</OPTION>
-                                    <OPTION value='s'>S</OPTION>
-                                    <OPTION value='t'>T</OPTION>
-                                    <OPTION value='u'>U</OPTION>
-                                    <OPTION value='v'>V</OPTION>
-                                    <OPTION value='w'>W</OPTION>
-                                    <OPTION value='x'>X</OPTION>
-                                    <OPTION value='y'>Y</OPTION>
-                                    <OPTION value='z'>Z</OPTION>
+                                    <OPTION>A</OPTION>
+                                    <OPTION>B</OPTION>
+                                    <OPTION>C</OPTION>
+                                    <OPTION>D</OPTION>
+                                    <OPTION>E</OPTION>
+                                    <OPTION>F</OPTION>
+                                    <OPTION>G</OPTION>
+                                    <OPTION>H</OPTION>
+                                    <OPTION>I</OPTION>
+                                    <OPTION>J</OPTION>
+                                    <OPTION>K</OPTION>
+                                    <OPTION>L</OPTION>
+                                    <OPTION>M</OPTION>
+                                    <OPTION>N</OPTION>
+                                    <OPTION>O</OPTION>
+                                    <OPTION>P</OPTION>
+                                    <OPTION>Q</OPTION>
+                                    <OPTION>R</OPTION>
+                                    <OPTION>S</OPTION>
+                                    <OPTION>T</OPTION>
+                                    <OPTION>U</OPTION>
+                                    <OPTION>V</OPTION>
+                                    <OPTION>W</OPTION>
+                                    <OPTION>X</OPTION>
+                                    <OPTION>Y</OPTION>
+                                    <OPTION>Z</OPTION>
                                 </SELECT>
                             </FORM>
                         </td>
