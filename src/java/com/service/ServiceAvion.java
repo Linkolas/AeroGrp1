@@ -5,7 +5,9 @@
 package com.service;
 
 import com.dao.DaoAvion;
+import com.dao.DaoForfait;
 import com.domaine.Avion;
+import com.domaine.Forfait;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,14 +32,21 @@ public class ServiceAvion {
                 avion.setNum_avion(result.getInt("num_avion"));
                 avion.setType_avion(result.getString("type_avion"));
                 avion.setTaux(result.getFloat("taux"));
-                avion.setForfait1(result.getFloat("forfait1"));
-                avion.setForfait2(result.getFloat("forfait2"));
-                avion.setForfait3(result.getFloat("forfait3"));
-                avion.setHeuresForfait1(result.getInt("heures_forfait1"));
-                avion.setHeuresForfait2(result.getInt("heures_forfait2"));
-                avion.setHeuresForfait3(result.getInt("heures_forfait3"));
                 avion.setReduction(result.getFloat("reduction_semaine"));
                 avion.setImmatriculation(result.getString("immatriculation"));
+                
+                ResultSet rsForfaits = DaoForfait.getForfaits(result.getString("type_avion"));
+                ArrayList<Forfait> forfaits = new ArrayList<Forfait>();
+                while(rsForfaits.next()) {
+                    Forfait forf = new Forfait();
+                    forf.setTypeAvion(rsForfaits.getString("type_avion"));
+                    forf.setPrix(rsForfaits.getFloat("prix"));
+                    forf.setNumero(rsForfaits.getInt("numero"));
+                    forf.setHeures(rsForfaits.getInt("heures_forfait"));
+                    forfaits.add(forf);
+                }
+                
+                avion.setForfaits(forfaits);
                 avions.add(avion);
             }
             
@@ -60,12 +69,20 @@ public class ServiceAvion {
             avion.setNum_avion(result.getInt("num_avion"));
             avion.setType_avion(result.getString("type_avion"));
             avion.setTaux(result.getFloat("taux"));
-            avion.setForfait1(result.getFloat("forfait1"));
-            avion.setForfait2(result.getFloat("forfait2"));
-            avion.setForfait3(result.getFloat("forfait3"));
-            avion.setHeuresForfait1(result.getInt("heures_forfait1"));
-            avion.setHeuresForfait2(result.getInt("heures_forfait2"));
-            avion.setHeuresForfait3(result.getInt("heures_forfait3"));
+            
+            ResultSet rsForfaits = DaoForfait.getForfaits(result.getString("type_avion"));
+            ArrayList<Forfait> forfaits = new ArrayList<Forfait>();
+            while(rsForfaits.next()) {
+                Forfait forf = new Forfait();
+                forf.setTypeAvion(rsForfaits.getString("type_avion"));
+                forf.setPrix(rsForfaits.getFloat("prix"));
+                forf.setNumero(rsForfaits.getInt("numero"));
+                forf.setHeures(rsForfaits.getInt("heures_forfait"));
+                forfaits.add(forf);
+            }
+            
+            avion.setForfaits(forfaits);
+            
             avion.setReduction(result.getFloat("reduction_semaine"));
             avion.setImmatriculation(result.getString("immatriculation"));
             

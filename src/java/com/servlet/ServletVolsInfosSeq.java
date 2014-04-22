@@ -41,7 +41,7 @@ public class ServletVolsInfosSeq extends HttpServlet {
         //On vérifie que l'utilisateur est connecté
         HttpSession session = request.getSession();
         if(session.getAttribute("leLogin") == null) {
-            vue = "/ErreurConnexion";
+            vue = "/includes/connexion.jsp";
         } else {
             vue = "/includes/vol_informations.jsp";
             String strNum = (String) session.getAttribute("numMembre");

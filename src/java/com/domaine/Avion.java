@@ -6,6 +6,8 @@
 
 package com.domaine;
 
+import java.util.List;
+
 /**
  *
  * @author Nicolas
@@ -16,13 +18,16 @@ public class Avion {
     private float taux;
     private float reduction;
     private String immatriculation;
-    private float forfait1;
-    private float forfait2;
-    private float forfait3;
-    private int heuresForfait1;
-    private int heuresForfait2;
-    private int heuresForfait3;
-
+    private List<Forfait> forfaits;
+    
+    public void setForfaits(List<Forfait> vforf) {
+        forfaits = vforf;
+    }
+    
+    public List<Forfait> getForfaits() {
+        return forfaits;
+    }
+    
     /**
      * @return the num_avion
      */
@@ -91,89 +96,5 @@ public class Avion {
      */
     public void setImmatriculation(String immatriculation) {
         this.immatriculation = immatriculation;
-    }
-
-    /**
-     * @return the forfait1
-     */
-    public float getForfait1() {
-        return forfait1;
-    }
-
-    /**
-     * @param forfait1 the forfait1 to set
-     */
-    public void setForfait1(float forfait1) {
-        this.forfait1 = forfait1;
-    }
-
-    /**
-     * @return the forfait2
-     */
-    public float getForfait2() {
-        return forfait2;
-    }
-
-    /**
-     * @param forfait2 the forfait2 to set
-     */
-    public void setForfait2(float forfait2) {
-        this.forfait2 = forfait2;
-    }
-
-    /**
-     * @return the forfait3
-     */
-    public float getForfait3() {
-        return forfait3;
-    }
-
-    /**
-     * @param forfait3 the forfait3 to set
-     */
-    public void setForfait3(float forfait3) {
-        this.forfait3 = forfait3;
-    }
-
-    /**
-     * @return the heuresForfait1
-     */
-    public int getHeuresForfait1() {
-        return heuresForfait1;
-    }
-
-    /**
-     * @param heuresForfait1 the heuresForfait1 to set
-     */
-    public void setHeuresForfait1(int heuresForfait1) {
-        this.heuresForfait1 = heuresForfait1;
-    }
-
-    /**
-     * @return the heuresForfait2
-     */
-    public int getHeuresForfait2() {
-        return heuresForfait2;
-    }
-
-    /**
-     * @param heuresForfait2 the heuresForfait2 to set
-     */
-    public void setHeuresForfait2(int heuresForfait2) {
-        this.heuresForfait2 = heuresForfait2;
-    }
-
-    /**
-     * @return the heuresForfait3
-     */
-    public int getHeuresForfait3() {
-        return heuresForfait3;
-    }
-
-    /**
-     * @param heuresForfait3 the heuresForfait3 to set
-     */
-    public void setHeuresForfait3(int heuresForfait3) {
-        this.heuresForfait3 = heuresForfait3;
     }
 }

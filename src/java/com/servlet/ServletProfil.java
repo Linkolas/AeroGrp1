@@ -74,7 +74,7 @@ public class ServletProfil extends HttpServlet {
                   }
                     
                     String[] infosMembre = conn.getMembreProfil(Integer.parseInt(sessionNumMembre));   //Recupére l'user dans la BDD s'il existe
-                    session.setAttribute("infosMembres", infosMembre);
+                    request.setAttribute("infosMembres", infosMembre);
                 } catch (SQLException se) {
                     session.setAttribute("Erreur", "Impossible de se connecter.");
                 }
