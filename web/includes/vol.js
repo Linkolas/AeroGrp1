@@ -24,5 +24,5 @@ function triVols() {
 }
 
 function selectVol(numSeq) {
-    ajax("InfosSeqVol?numseq="+numSeq, "affichage", "Chargement de la séquence de vol...");
+    ajax("InfosSeqVol?numseq="+numSeq, "affichage", "Chargement de la sequence de vol...");
 }

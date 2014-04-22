@@ -62,8 +62,10 @@ if(vol == null) {
             <TD>Prix à l'heure habituel : <%= in.getTaux() %> €/h</TD>
         </TR>
         <TR>
-            <TD><%= in.getNom() %> <%= in.getPrenom() %></TD>
-            <TD>Prix à l'heure final : <%= vol.getTauxInstructeur() %> €/h</TD>
+            <TD colspan='2'><%= in.getNom() %> <%= in.getPrenom() %></TD>
+        </TR>
+        <TR>
+            <TD colspan='2'>Prix à l'heure retenu : <%= vol.getTauxInstructeur() %> €/h</TD>
         </TR>
     </TABLE>
     <%
@@ -79,7 +81,44 @@ if(vol == null) {
             <TD><%= av.getImmatriculation() %></TD>
             <TD>Réduction horaire : <%= vol.getReductionSemaine() %> €/h</TD>
         </TR>
+        <TR>
+            <TD colspan='2'>Prix à l'heure retenu : <%= vol.getTaux()-vol.getReductionSemaine() %> €/h</TD>
+        </TR>
     </TABLE>
+    <div style="clear: both;"></div>
+    <BR/>
+    <BR/>
+    Coût total :
+    <TABLE style="margin-left: auto; margin-right: auto; width: 500px;">
+        <TR>
+            <TD>Avion</TD>
+            <TD><%= vol.getTaux()-vol.getReductionSemaine() %> €/h</TD>
+        </TR>
+        <%
+        if(in != null) {
+        %>
+        <TR>
+            <TD>Instructeur</TD>
+            <TD><%= vol.getTauxInstructeur() %> €/h</TD>
+        </TR>
+        <%
+        }
+        %>
+        <TR>
+            <TD>Heures de vol</TD>
+            <TD><%= vol.getTemps() %></TD>
+        </TR>
+    </TABLE>
+    <%
+    if(vol.getPrixSpecial() < 0) {
+        float total = vol.getTaux()-vol.getReductionSemaine();
+        if(in != null) total += vol.getTauxInstructeur();
+        total *= vol.getTemps();
+        out.println("TOTAL : "+total+" €");
+    } else {
+        out.println("TOTAL : "+vol.getPrixSpecial()+" € (prix spécial)");
+    }
+    %>
 <%
 }
 %>
