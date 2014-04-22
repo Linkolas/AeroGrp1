@@ -4,10 +4,13 @@
  */
 package com.servlet;
 
+import com.domaine.Avion;
+import com.domaine.Instructeur;
 import com.domaine.Vol;
+import com.service.ServiceAvion;
+import com.service.ServiceInstructeur;
 import com.service.ServiceVol;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,11 +48,20 @@ public class ServletVolsInfosSeq extends HttpServlet {
             String numseq = request.getParameter("numseq");
             if(numseq != null) {
                 Vol vol = ServiceVol.getVol(Integer.parseInt(numseq));
+                Avion avion = ServiceAvion.getAvion(vol.getNumAvion());
+                Instructeur instructeur = null;
+                if(vol.getNumInstructeur() != 0) {
+                    instructeur = ServiceInstructeur.getInstructeur(vol.getNumInstructeur());
+                }
                 
                 // On n'affiche les informations de la séquence qu'aux administrateurs et au membre concerné.
                 if((String) session.getAttribute("role") == "admin"
                         || Integer.parseInt(strNum) == vol.getNumMembre()) {
                     request.setAttribute("vol", vol);
+                    request.setAttribute("avion", avion);
+                    if(vol.getNumInstructeur() != 0) {
+                        request.setAttribute("instructeur", instructeur);
+                    }
                 }
             }
         }
