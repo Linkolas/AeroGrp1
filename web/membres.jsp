@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="includes/global.css"/>
+        <script><jsp:include page="includes/ajax.js"/></script>
         <title>Affichage des membres de l'aéroclub</title>
     </head>
     <body>
@@ -31,7 +32,7 @@
                             Trier par<BR/>
                             Noms de famille<BR/>
                             <FORM>
-                                <SELECT name='lettre' size='1'>
+                                <SELECT name='lettre' size='1' onChange="triMembres();">
                                     <OPTION value='*' selected>Tous</OPTION>
                                     <OPTION value='a'>A</OPTION>
                                     <OPTION value='b'>B</OPTION>
@@ -60,19 +61,16 @@
                                     <OPTION value='y'>Y</OPTION>
                                     <OPTION value='z'>Z</OPTION>
                                 </SELECT>
-                                <INPUT TYPE="submit" VALUE="Envoyer la requête" onClick="javascript:Envoyer();"/>
                             </FORM>
                         </td>
-                        <td rowspan=2 style='border-left: 1px black solid;'>
-                            
-                            Informations concernant la personne sélectionnée
-                            
+                        <td style='border-left: 1px black solid;'>
+                            <jsp:include page ="includes/menu_admin.jsp"/>
                         </td>
                     </tr>
                     <tr>
                         <td style='width: 150px; height: 400px; border-top: 1px black solid;'>
-                            <FORM>
-                                <SELECT size="24" style="width: 150px; height: 395px;">
+                            <FORM onclick="ajax(InfosSeqVol?numseq=+numSeq ,infomembrre, "Chargement des info du membre...")">
+                                <SELECT id="nom" name="nom" size="24" style="width: 150px; height: 395px;" onclick="triMembres();">
                                     <% 
                                     List<Membre> nomsMembres = (ArrayList<Membre>) request.getAttribute("nomsMembres");
                                     for(Membre membrre : nomsMembres) { %>
@@ -80,6 +78,11 @@
                                  <% } %>
                                 </SELECT>
                             </FORM>
+                        </td >
+                        <td style='border-left: 1px black solid; border-top: 1px black solid;' >
+                            <div id="resultat">
+                                  Ici c'est le résultat
+                            </div>
                         </td>
                     </tr>
                 </table>
