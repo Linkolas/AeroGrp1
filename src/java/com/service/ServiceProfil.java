@@ -48,27 +48,28 @@ public class ServiceProfil {
     public void updateMembre2(Integer prmNumMembre, ArrayList prmMemb) {
         
 
-        //ResultSet result = DaoProfil.updateMembre2(prmNumMembre, prmMemb);
+        
       
          for(int i = 0; i < prmMemb.size(); i++)
          {
             if(prmMemb.get(i) == "") {
                 prmMemb.set(i, null);
-                System.out.println(prmMemb.get(i));
                 
-            } else if (prmMemb.get(10) != null) {
+                
+            } else if (i==10) {
+                    
                     Calendar cal = new GregorianCalendar();
                     String str = (String) prmMemb.get(10);
-                    //int year = Integer.parseInt(str.substring(0,4)); 
-                   // int month = Integer.parseInt(str.substring(5,7));
-                    //int date = Integer.parseInt(str.substring(8,10));
-                    //cal.set(year, month-1, date);
-                    //java.sql.Date newDate = new java.sql.Date(cal.getTime().getTime());
-                    //prmMemb.set(10, newDate);
+                    int year = Integer.parseInt(str.substring(0,4)); 
+                    int month = Integer.parseInt(str.substring(5,7));
+                    int date = Integer.parseInt(str.substring(8,10));
+                    cal.set(year, month-1, date);
+                    java.sql.Date newDate = new java.sql.Date(cal.getTime().getTime());
+                    prmMemb.set(10, newDate);
                 }
             }
-         
-           //DaoProfil.close();
+           ResultSet result = DaoProfil.updateMembre2(prmNumMembre, prmMemb);
+           DaoProfil.close();
         }
         
                 

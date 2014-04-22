@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -39,7 +40,7 @@ public class DaoProfil {
         return result;
     }
     
-   static public ResultSet updateMembre2(Integer num_membre, ArrayList<String> memb){
+   static public ResultSet updateMembre2(Integer num_membre, ArrayList memb){
         result = null;
         try {
             laConnexion = AccesBDD.getConnexion();
@@ -57,42 +58,35 @@ public class DaoProfil {
             nom.add("lieu_naissance");
             nom.add("carte_federal");
             
-            String query = "";
+            String query = "UPDATE membres SET ";
             String set = "";
-            for(int i = 0; i < memb.size(); i++) {
+            for(int i = 0; i < memb.size()-1; i++) {
                 
-                if(!"".equals(memb.get(i))) {
-                set +=",";
-                query += nom.get(i) + " = ? " + set;
-                System.out.println(query); 
-                
+                if(memb.get(i) != null) {
+                    if(!"".equals(set)) {    
+                        set +=", ";
+                    }
+                set += nom.get(i) + " = ? ";
                }
             }
-            //query = "UPDATE membre"
-                    //+"SET nom = ?, prenom = ?, adresse = ?, code_postal = ?, ville = ?, tel = ?, portable = ?, email = ?, profession = ?, date_naissance = ?, lieu_naissance = ?, carte_federal = ?"
-                  //  +"FROM membres WHERE num_membre=?";
-            //PreparedStatement instructionSql = laConnexion.prepareStatement(query);
-            //System.out.println(memb);
-           /* for(int i = 0; i < memb.size(); i++)
+            query += set;
+            query += "WHERE Num_Membre = ?";
+            System.out.println(query); 
+            int index =1;
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            for(int i = 0; i < memb.size()-1; i++)
             {
-                if(memb.get(i) != null && !"".equals(memb.get(i)) ) {
-                    System.out.println("donnée à l'indice " + i + " = " + memb.get(i));
+                if(memb.get(i) != null) {
+                    if (memb.get(i).getClass() == String.class) {
+                        instructionSql.setString(index, (String) memb.get(i));
+                    } else {
+                        instructionSql.setDate(index, (java.sql.Date) memb.get(i));
+                    }
+                    index +=1;
                 }
-            } /* 
-            instructionSql.setString(1,memb.get(1));
-            instructionSql.setString(2,memb.get(2));
-            instructionSql.setString(3,memb.get(3));
-            instructionSql.setString(4,memb.get(4));
-            instructionSql.setString(5,memb.get(5));
-            instructionSql.setString(6,memb.get(6));
-            instructionSql.setString(7,memb.get(7));
-            instructionSql.setString(8,memb.get(8));
-            instructionSql.setString(9,memb.get(9));
-            instructionSql.setString(10,memb.get(10));
-            instructionSql.setString(11,memb.get(11));
-            instructionSql.setString(12,memb.get(12));
-            instructionSql.setInt(13,num_membre);*/
-            //result = instructionSql.executeQuery();
+            }
+            
+            result = instructionSql.executeQuery();
             return result;
             }
         catch(Exception e) {
