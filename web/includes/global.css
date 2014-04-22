@@ -90,23 +90,16 @@ div.contenu#index div#index-select {
     clear : both;
 }
 
-div.contenu#index div#index-co {
-    
-}
-
-div.table{
-    margin-top: 25px;
-    margin-left: 25px;
-    background-color: white;
-    text-align: center;
-}
-
-div.table table{
+table#compte {
     border-collapse: collapse;
     border: 1px solid black;
+    text-align: center;
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-div.table th, div.table td{
+table#compte th, table#compte td {
     border: 1px solid black;
 }
 

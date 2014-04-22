@@ -31,41 +31,6 @@ public class ServiceConnexion {
         
         return retour ;
     }
-    
-    
-        public List<OperationCompte> getComptes(Integer num_membre) throws SQLException {
-        
-        List<OperationCompte> retour = null;
-        
-        try {
-            ResultSet result = DaoPostgre.getComptes(num_membre);
-        
-            Compte c1 = new Compte(num_membre);
-            
-            
-            
-            while(result.next()) {
-                
-               
-                c1.addOperation(new OperationCompte(result.getInt(1), result.getDate(2), result.getFloat(3),
-                        result.getString(4),result.getBoolean(5), result.getInt(7)));
-                
-                 
-             
-            }
-            
-            retour = c1.getOperations();
-            
-        } catch (SQLException se) {
-               //retour.add(1,"TEST !!");
-               //retour.add(2,"PASS !!");
-        }
-        
-        DaoPostgre.close();
-        
-        return retour ;
-    }
-    
         
     private String encode(String password)
     {
