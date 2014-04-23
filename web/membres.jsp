@@ -73,7 +73,7 @@
                                     String role = (String) request.getAttribute("role");
                                 List<Membre> nomsMembres = (ArrayList<Membre>) request.getAttribute("nomsMembres");
                                 for(Membre membrre : nomsMembres) { %>
-                                <OPTION value="<%= role +" "+membrre.getNum_membre() %>"><%= membrre.getNom() +" "+ membrre.getPrenom() %></OPTION>
+                                <OPTION value="<%= membrre.getNum_membre() %>"><%= membrre.getNom() +" "+ membrre.getPrenom() %></OPTION>
                              <% } %>
                             </SELECT>
                         </td>

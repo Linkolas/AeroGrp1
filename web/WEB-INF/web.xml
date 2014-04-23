@@ -32,10 +32,6 @@
         <servlet-name>ServletInstructeurs</servlet-name>
         <servlet-class>com.servlet.ServletInstructeurs</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ServletMenugauche</servlet-name>
-        <servlet-class>com.servlet.ServletMenu_gauche</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -67,10 +63,6 @@
     <servlet-mapping>
         <servlet-name>ServletInstructeurs</servlet-name>
         <url-pattern>/Instructeurs</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServletMenugauche</servlet-name>
-        <url-pattern>/Menugauche</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
