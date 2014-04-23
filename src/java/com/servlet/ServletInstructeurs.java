@@ -20,10 +20,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author cyril.delanghe
  */
-@WebServlet(name = "ServletMembre", urlPatterns = {"/ServletMembre"})
+@WebServlet(name = "ServletInstructeurs", urlPatterns = {"/ServletInstructeurs"})
 
-public class ServletMembre extends HttpServlet {
-
+public class ServletInstructeurs extends HttpServlet {
 
     String vue;
     
@@ -51,7 +50,7 @@ public class ServletMembre extends HttpServlet {
             if("admin".equals(role) ){
                 vue = "/membres.jsp";
                 ServiceMembre conn = new ServiceMembre();
-                List<Membre> nomsMembres = conn.toutlesMembres();
+                List<Membre> nomsMembres = conn.toutlesInstructeurs();
                 request.setAttribute("nomsMembres", nomsMembres);
                 request.setAttribute("role", session.getAttribute("role"));
             }

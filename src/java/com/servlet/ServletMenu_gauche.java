@@ -1,14 +1,12 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.servlet;
 
-import com.domaine.Membre;
-import com.service.ServiceMembre;
 import java.io.IOException;
-import static java.lang.System.out;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,13 +16,12 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author cyril.delanghe
+ * @author Satanar
  */
-@WebServlet(name = "ServletMembre", urlPatterns = {"/ServletMembre"})
 
-public class ServletMembre extends HttpServlet {
+@WebServlet(name = "ServletMenugauche", urlPatterns = {"/ServletMenugauche"})
 
-
+public class ServletMenu_gauche extends HttpServlet  {
     String vue;
     
     /**
@@ -37,30 +34,18 @@ public class ServletMembre extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @SuppressWarnings("empty-statement")
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         //On vérifie que l'utilisateur est connecté
         HttpSession session = request.getSession();
-        if(session.getAttribute("leLogin") == null) {
-            vue = "/ErreurConnexion";
-        } else {
-            String role = (String) session.getAttribute("role");
-            //out.println(session.getAttribute("role"));
-            if("admin".equals(role) ){
-                vue = "/membres.jsp";
-                ServiceMembre conn = new ServiceMembre();
-                List<Membre> nomsMembres = conn.toutlesMembres();
-                request.setAttribute("nomsMembres", nomsMembres);
-                request.setAttribute("role", session.getAttribute("role"));
-            }
-            else  vue = "/ErreurConnexion";
-        }
+        vue = "/includes/menu_gauche.jsp";
+        String role = (String) session.getAttribute("role");
+        request.setAttribute("role", role);
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP

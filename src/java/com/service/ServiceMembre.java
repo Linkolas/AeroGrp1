@@ -22,7 +22,6 @@ public class ServiceMembre {
         List<Membre> lmemb = new ArrayList<Membre>();
         
         try{
-            out.println("michel est rentré");
             ResultSet result = DaoMembre.toutlesMembres();
             while(result.next()) {   
                 Membre memb = new Membre();
@@ -33,10 +32,30 @@ public class ServiceMembre {
             }
         }
         catch(SQLException se){
-            out.println("michel est malade");
         }
         DaoMembre.close();
         
         return lmemb;
     }
+    
+    public List<Membre> toutlesInstructeurs(){
+        List<Membre> lmemb = new ArrayList<Membre>();
+        
+        try{
+            ResultSet result = DaoMembre.toutlesInstructeurs();
+            while(result.next()) {   
+                Membre memb = new Membre();
+                memb.setNum_membre(result.getInt("num_membre"));
+                memb.setNom(result.getString("nom"));
+                memb.setPrenom(result.getString("prenom"));
+                lmemb.add(memb);
+            }
+        }
+        catch(SQLException se){
+        }
+        DaoMembre.close();
+        
+        return lmemb;
+    }
+    
 }

@@ -2,6 +2,7 @@ package com.servlet;
 import com.service.ServiceConnexion;
 import java.io.IOException;
 import java.sql.SQLException;
+import javafx.scene.web.WebEvent;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,8 +40,10 @@ public class ServletConnexion extends HttpServlet {
                     String[] user = conn.getUser(paramLogin, paramPasswd);   //Recupére l'user dans la BDD s'il existe
                     String name = user[1];
                     String nummembre = user[2];
+                    String role = user[3];
                     session.setAttribute("leLogin", name);
                     session.setAttribute("numMembre", nummembre);
+                    session.setAttribute("role", role);
                 } catch (SQLException se) {
                     session.setAttribute("Erreur", "Impossible de se connecter.");
                 }

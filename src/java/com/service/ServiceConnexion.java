@@ -19,7 +19,8 @@ public class ServiceConnexion {
         
             while(result.next()) {
                 retour[1] = result.getString("name");
-                retour[2] = result.getString(2);
+                retour[2] = result.getString("nummembre");
+                retour[3] = result.getString("role");
             }
             
         } catch (SQLException se) {
