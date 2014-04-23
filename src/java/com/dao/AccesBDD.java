@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class AccesBDD {
     static Connection laConnexion = null;
     static ResultSet result       = null;
-    static final String URL    = "jdbc:mysql://83.198.214.30:3306/aerogrp1";
+    static final String URL    = "jdbc:mysql://92.155.182.145:3306/aerogrp1";
     static final String USER   = "test";
     static final String PASSWD = "test";
     

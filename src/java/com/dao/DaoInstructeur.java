@@ -47,8 +47,8 @@ public class DaoInstructeur {
             
             String query = "SELECT * "
                          + "FROM membres, users, taux_instructeurs "
-                         + "WHERE membres.Num_Membre = users.numMembres "
-                         + "AND users.numMembre = taux_instructeur.Num_Membre "
+                         + "WHERE membres.Num_Membre = users.numMembre "
+                         + "AND users.numMembre = taux_instructeurs.Num_Membre "
                          + "AND membres.Num_Membre = ?";
             PreparedStatement requete = laConnexion.prepareStatement(query);
             requete.setInt(1, numinst);
