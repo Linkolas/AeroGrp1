@@ -24,10 +24,7 @@ public class DaoPostgre {
         result = null;
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
-            
+            laConnexion = AccesBDD.getConnexion();
             String query ="SELECT name, nummembre, role FROM users WHERE name= ? AND password= ?";
             PreparedStatement instructionSql = laConnexion.prepareStatement(query);
             instructionSql.setString(1,user);

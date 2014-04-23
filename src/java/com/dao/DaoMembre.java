@@ -34,9 +34,7 @@ public class DaoMembre {
     static public ResultSet toutlesMembres(){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
+            laConnexion = AccesBDD.getConnexion();
                try { 
                     String query;
                     query = "SELECT * "
@@ -60,9 +58,7 @@ public class DaoMembre {
     static public ResultSet toutlesInstructeurs(){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
+            laConnexion = AccesBDD.getConnexion();
                try { 
                     String query;
                     query = "SELECT * "
@@ -83,12 +79,34 @@ public class DaoMembre {
         return result;
     }
     
+    static public ResultSet toutlesAdmin(){
+        result = null;
+        try {
+            laConnexion = AccesBDD.getConnexion();
+               try { 
+                    String query;
+                    query = "SELECT * "
+                           +"FROM membres, users "
+                           +"WHERE users.numMembre = membres.Num_Membre "
+                           +"AND role = 'admin' "; 
+                    PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+                    result = instructionSql.executeQuery();
+                    return result;
+               }
+               catch(Exception e) {
+                       System.out.println(e);
+               }
+            }
+        catch(Exception e) {
+                System.out.println(e);
+            }
+        return result;
+    }
+    
     static public ResultSet getMembre(String nom_membre, String pre_membre){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
+            laConnexion = AccesBDD.getConnexion();
                 
             String query;
             query = "SELECT * "

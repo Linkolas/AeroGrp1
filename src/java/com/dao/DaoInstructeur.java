@@ -25,7 +25,9 @@ public class DaoInstructeur {
             laConnexion = AccesBDD.getConnexion();
             
             String query = "SELECT * "
-                          +"FROM instructeurs";
+                         + "FROM membres, users, taux_instructeur "
+                         + "WHERE membre.Num_Membre = users.numMembre "
+                         + "AND users.numMembre = taux_instructeur.Num_Membre";
             
             PreparedStatement instructionSql = laConnexion.prepareStatement(query);
             result = instructionSql.executeQuery();
@@ -43,7 +45,11 @@ public class DaoInstructeur {
         try {
             laConnexion = AccesBDD.getConnexion();
             
-            String query = "SELECT * FROM instructeurs WHERE Num_Instructeur = ?";
+            String query = "SELECT * "
+                         + "FROM membres, users, taux_instructeurs "
+                         + "WHERE membres.Num_Membre = users.numMembres "
+                         + "AND users.numMembre = taux_instructeur.Num_Membre "
+                         + "AND membres.Num_Membre = ?";
             PreparedStatement requete = laConnexion.prepareStatement(query);
             requete.setInt(1, numinst);
             
