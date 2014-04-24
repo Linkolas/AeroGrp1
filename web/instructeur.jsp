@@ -4,6 +4,7 @@
     Author     : Satanar
 --%>
 
+<%@page import="com.domaine.Instructeur"%>
 <%@page import="com.domaine.Membre"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -71,9 +72,9 @@
                             <SELECT id="nom" name="nom" size="24" style="width: 150px; height: 395px;" onclick="choixMembre();">
                                 <% 
                                     String role = (String) request.getAttribute("role");
-                                List<Membre> nomsMembres = (ArrayList<Membre>) request.getAttribute("nomsMembres");
-                                for(Membre membrre : nomsMembres) { %>
-                                <OPTION value="<%= role +" "+membrre.getNum_membre() %>"><%= membrre.getNom() +" "+ membrre.getPrenom() %></OPTION>
+                                List<Instructeur> instructeurrs = (ArrayList<Instructeur>) request.getAttribute("instructeurs");
+                                for(Instructeur instructeurs : instructeurrs) { %>
+                                <OPTION value="<%= role +" "+instructeurs.getNumInstructeur()%>"><%= instructeurs.getNom() +" "+ instructeurs.getPrenom() %></OPTION>
                              <% } %>
                             </SELECT>
                         </td>

@@ -4,6 +4,7 @@
  */
 package com.dao;
 
+import static com.dao.DaoMembre.result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
  */
 public class DaoInstructeur {
     static Connection laConnexion = null;
+    static ResultSet result       = null;
     
     static public ResultSet getInstructeurs() {
         ResultSet result = null;

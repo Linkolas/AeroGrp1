@@ -38,24 +38,4 @@ public class ServiceMembre {
         return lmemb;
     }
     
-    public List<Membre> toutlesInstructeurs(){
-        List<Membre> lmemb = new ArrayList<Membre>();
-        
-        try{
-            ResultSet result = DaoMembre.toutlesInstructeurs();
-            while(result.next()) {   
-                Membre memb = new Membre();
-                memb.setNum_membre(result.getInt("num_membre"));
-                memb.setNom(result.getString("nom"));
-                memb.setPrenom(result.getString("prenom"));
-                lmemb.add(memb);
-            }
-        }
-        catch(SQLException se){
-        }
-        DaoMembre.close();
-        
-        return lmemb;
-    }
-    
 }

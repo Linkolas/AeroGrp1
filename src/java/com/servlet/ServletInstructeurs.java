@@ -4,7 +4,9 @@
  */
 package com.servlet;
 
+import com.domaine.Instructeur;
 import com.domaine.Membre;
+import com.service.ServiceInstructeur;
 import com.service.ServiceMembre;
 import java.io.IOException;
 import static java.lang.System.out;
@@ -49,9 +51,9 @@ public class ServletInstructeurs extends HttpServlet {
             //out.println(session.getAttribute("role"));
             if("admin".equals(role) ){
                 vue = "/membres.jsp";
-                ServiceMembre conn = new ServiceMembre();
-                List<Membre> nomsMembres = conn.toutlesInstructeurs();
-                request.setAttribute("nomsMembres", nomsMembres);
+                ServiceInstructeur conn = new ServiceInstructeur();
+                List<Instructeur> instructeurs = conn.getListeInstructeurs();
+                request.setAttribute("instructeurs", instructeurs);
                 request.setAttribute("role", session.getAttribute("role"));
             }
             else  vue = "/ErreurConnexion";

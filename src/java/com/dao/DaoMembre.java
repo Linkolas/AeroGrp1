@@ -22,15 +22,6 @@ public class DaoMembre {
     static final String USER   = "test";
     static final String PASSWD = "test";
     
-    static {
-        try {
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
-        } 
-        catch(SQLException se) {
-            
-        }
-    }
-    
     static public ResultSet toutlesMembres(){
         result = null;
         try {
@@ -55,29 +46,6 @@ public class DaoMembre {
         return result;
     }
     
-    static public ResultSet toutlesInstructeurs(){
-        result = null;
-        try {
-            laConnexion = AccesBDD.getConnexion();
-               try { 
-                    String query;
-                    query = "SELECT * "
-                           +"FROM membres, users "
-                           +"WHERE users.numMembre = membres.Num_Membre "
-                           +"AND role = 'instructeur' "; 
-                    PreparedStatement instructionSql = laConnexion.prepareStatement(query);
-                    result = instructionSql.executeQuery();
-                    return result;
-               }
-               catch(Exception e) {
-                       System.out.println(e);
-               }
-            }
-        catch(Exception e) {
-                System.out.println(e);
-            }
-        return result;
-    }
     
     static public ResultSet toutlesAdmin(){
         result = null;
