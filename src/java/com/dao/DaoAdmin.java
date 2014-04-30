@@ -14,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author cyril.delanghe
  */
-public class DaoMembre {
+public class DaoAdmin {
     
     static Connection laConnexion = null;
     static ResultSet result       = null;
@@ -22,7 +22,7 @@ public class DaoMembre {
     static final String USER   = "test";
     static final String PASSWD = "test";
     
-    static public ResultSet toutlesMembres(){
+    static public ResultSet toutlesAdmins(){
         result = null;
         try {
             laConnexion = AccesBDD.getConnexion();
@@ -31,7 +31,7 @@ public class DaoMembre {
                     query = "SELECT * "
                            +"FROM membres, users "
                            +"WHERE users.numMembre = membres.Num_Membre "
-                           +"AND role = 'membre' "; 
+                           +"AND role = 'admin' "; 
                     PreparedStatement instructionSql = laConnexion.prepareStatement(query);
                     result = instructionSql.executeQuery();
                     return result;
@@ -80,7 +80,6 @@ public class DaoMembre {
 
 
 }
-    
     
     
     
