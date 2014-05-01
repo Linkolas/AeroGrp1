@@ -7,7 +7,7 @@ package com.domaine;
 import java.util.Date;
 
 /**
- *
+ * 
  * @author franck.cros
  */
 public class OperationCompte {
