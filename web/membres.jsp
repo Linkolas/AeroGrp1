@@ -77,7 +77,7 @@
                             </SELECT>
                         </td>
                         <td style='border-left: 1px black solid; border-top: 1px black solid;' id="resultat">
-                            Ici c'est le résultat
+                           <jsp:include page="includes/membre_informations_compte.jsp"/>
                         </td>
                     </tr>
                 </table>
