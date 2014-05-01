@@ -1,12 +1,9 @@
 package com.service;
 import com.dao.DaoPostgre;
-import com.domaine.Compte;
-import com.domaine.OperationCompte;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
 public class ServiceConnexion {
     
@@ -33,7 +30,7 @@ public class ServiceConnexion {
         return retour ;
     }
         
-    private String encode(String password)
+    static public String encode(String password)
     {
         byte[] uniqueKey = password.getBytes();
         byte[] hash      = null;

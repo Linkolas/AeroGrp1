@@ -48,6 +48,8 @@ public class ServletProfil extends HttpServlet {
             vue = "/profil.jsp";
             ServiceProfil conn = new ServiceProfil();
             String sessionNumMembre = (String) session.getAttribute("numMembre");
+            String[] infosUsers = {(String) session.getAttribute("leLogin"), "***********"};
+            request.setAttribute("infosUsers", infosUsers);
               try {
                   
                  if("1".equals(request.getParameter("modificationProfil")))
@@ -66,14 +68,14 @@ public class ServletProfil extends HttpServlet {
                      tableauInfos.add(request.getParameter("date_naiss"));
                      tableauInfos.add(request.getParameter("lieu_naiss"));
                      tableauInfos.add(request.getParameter("carte_fed"));
-                     conn.updateMembre2(Integer.parseInt(sessionNumMembre), tableauInfos);
+                     //conn.updateMembre2(Integer.parseInt(sessionNumMembre), tableauInfos);
+                     
+                    String passUser = request.getParameter("passwd");
+                    String pseudoUser = (String) session.getAttribute("leLogin");
+                    conn.updateUser(pseudoUser, passUser);
                   }
-                  else
-                  {
-                      
-                  }
-                    
                     String[] infosMembre = conn.getMembreProfil(Integer.parseInt(sessionNumMembre));   //Recupére l'user dans la BDD s'il existe
+                   
                     request.setAttribute("infosMembres", infosMembre);
                 } catch (SQLException se) {
                     session.setAttribute("Erreur", "Impossible de se connecter.");
