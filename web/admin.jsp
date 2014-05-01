@@ -1,13 +1,12 @@
 <%-- 
-    Document   : affichage_a
-    Created on : 28 nov. 2013, 17:19:14
+    Document   : admin
+    Created on : 1 mai 2014, 17:09:11
     Author     : Satanar
 --%>
 
-<%@page import="com.domaine.Instructeur"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.domaine.Membre"%>
 <%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -70,10 +69,10 @@
                     <tr>
                         <td style='width: 150px; height: 400px; border-top: 1px black solid;'>
                             <SELECT id="nom" name="nom" size="24" style="width: 150px; height: 395px;" onclick="choixMembre();">
-                                <% 
-                                List<Instructeur> instructeurrs = (ArrayList<Instructeur>) request.getAttribute("instructeurs");
-                                for(Instructeur instructeurs : instructeurrs) { %>
-                                <OPTION value="<%= instructeurs.getNumInstructeur()%>"><%= instructeurs.getNom() +" "+ instructeurs.getPrenom() %></OPTION>
+                                <%
+                                List<Membre> nomsMembres = (ArrayList<Membre>) request.getAttribute("nomsMembres");
+                                for(Membre membrre : nomsMembres) { %>
+                                <OPTION value="<%= membrre.getNum_membre() %>"><%= membrre.getNom() +" "+ membrre.getPrenom() %></OPTION>
                              <% } %>
                             </SELECT>
                         </td>
@@ -89,3 +88,4 @@
         </DIV>
     </body>
 </html>
+

@@ -21,6 +21,7 @@
         ecart -= 90; %>
     <input style="margin-top: 15px;" type="button" value="Gérer membres"  name="Membre"  onclick="self.location.href='<%= relatif %>Membres';"/>
     <input style="margin-top: 15px;" type="button" value="Gérer instructeurs"  name="Instructeur"  onclick="self.location.href='<%= relatif %>Instructeurs';"/>
+    <input style="margin-top: 15px;" type="button" value="Gérer administrateurs"  name="Admin"  onclick="self.location.href='<%= relatif %>Admins';"/>
     <% } %>
     <input style="margin-top:<%= ecart %>px;" type="button" value="Contact" name="Contact" onclick="self.location.href='<%= relatif %>contact.jsp';" />
 </div>

@@ -1,13 +1,14 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.servlet;
 
-import com.domaine.Instructeur;
-import com.service.ServiceInstructeur;
+import com.domaine.Membre;
+import com.service.ServiceAdmin;
 import java.io.IOException;
-import static java.lang.System.out;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,9 +21,10 @@ import javax.servlet.http.HttpSession;
  *
  * @author cyril.delanghe
  */
-@WebServlet(name = "ServletInstructeurs", urlPatterns = {"/ServletInstructeurs"})
+@WebServlet(name = "ServletAdmin", urlPatterns = {"/ServletAdmin"})
 
-public class ServletInstructeurs extends HttpServlet {
+public class ServletAdmin extends HttpServlet {
+
 
     String vue;
     
@@ -48,12 +50,10 @@ public class ServletInstructeurs extends HttpServlet {
             String role = (String) session.getAttribute("role");
             //out.println(session.getAttribute("role"));
             if("admin".equals(role) ){
-                vue = "/instructeur.jsp";
-                //ServiceInstructeur conn = new ServiceInstructeur();
-                List<Instructeur> instructeurs = ServiceInstructeur.getListeInstructeurs();
-                out.println("michel");
-                request.setAttribute("instructeurs", instructeurs);
-                request.setAttribute("role", session.getAttribute("role"));
+                vue = "/admin.jsp";
+                ServiceAdmin conn = new ServiceAdmin();
+                List<Membre> nomsMembres = conn.toutlesAdmins();
+                request.setAttribute("nomsMembres", nomsMembres);
             }
             else  vue = "/ErreurConnexion";
         }
@@ -102,3 +102,4 @@ public class ServletInstructeurs extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 }
+

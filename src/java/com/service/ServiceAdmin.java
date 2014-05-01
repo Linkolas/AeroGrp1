@@ -7,7 +7,6 @@ package com.service;
 import com.dao.DaoAdmin;
 import com.dao.DaoMembre;
 import com.domaine.Membre;
-import static java.lang.System.out;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

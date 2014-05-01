@@ -7,7 +7,6 @@ package com.servlet;
 import com.domaine.Membre;
 import com.service.ServiceMembre;
 import java.io.IOException;
-import static java.lang.System.out;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

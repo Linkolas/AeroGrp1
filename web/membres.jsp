@@ -70,7 +70,6 @@
                         <td style='width: 150px; height: 400px; border-top: 1px black solid;'>
                             <SELECT id="nom" name="nom" size="24" style="width: 150px; height: 395px;" onclick="choixMembre();">
                                 <% 
-                                    String role = (String) request.getAttribute("role");
                                 List<Membre> nomsMembres = (ArrayList<Membre>) request.getAttribute("nomsMembres");
                                 for(Membre membrre : nomsMembres) { %>
                                 <OPTION value="<%= membrre.getNum_membre() %>"><%= membrre.getNom() +" "+ membrre.getPrenom() %></OPTION>

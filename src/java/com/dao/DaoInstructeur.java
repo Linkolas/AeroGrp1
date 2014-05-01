@@ -4,7 +4,6 @@
  */
 package com.dao;
 
-import static com.dao.DaoMembre.result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,15 +20,15 @@ public class DaoInstructeur {
     static ResultSet result       = null;
     
     static public ResultSet getInstructeurs() {
-        ResultSet result = null;
+        result = null;
         
         try {
             laConnexion = AccesBDD.getConnexion();
             
             String query = "SELECT * "
-                         + "FROM membres, users, taux_instructeur "
-                         + "WHERE membre.Num_Membre = users.numMembre "
-                         + "AND users.numMembre = taux_instructeur.Num_Membre";
+                         + "FROM membres, users, taux_instructeurs "
+                         + "WHERE membres.Num_Membre = users.numMembre "
+                         + "AND users.numMembre = taux_instructeurs.Num_Membre ";
             
             PreparedStatement instructionSql = laConnexion.prepareStatement(query);
             result = instructionSql.executeQuery();

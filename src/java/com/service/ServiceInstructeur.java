@@ -6,6 +6,7 @@ package com.service;
 
 import com.dao.DaoInstructeur;
 import com.domaine.Instructeur;
+import static java.lang.System.out;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class ServiceInstructeur {
             ResultSet result = DaoInstructeur.getInstructeurs();
             while(result.next()) {
                 Instructeur instructeur = new Instructeur();
-                instructeur.setNumInstructeur(result.getInt("num_instructeur"));
+                instructeur.setNumInstructeur(result.getInt("num_membre"));
                 instructeur.setNom(result.getString("nom"));
                 instructeur.setPrenom(result.getString("prenom"));
                 instructeur.setNumCivilite(result.getInt("num_civil"));
