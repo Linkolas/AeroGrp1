@@ -10,7 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -95,6 +94,25 @@ public class DaoProfil {
                 System.out.println(e);
             }
     }
+   
+    static public void updateUser (String nomUser, String passwdUser) {
+       try {
+           
+           
+           
+           String query = "UPDATE users SET password = ? WHERE name = ?" ;
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            instructionSql.setString(1,passwdUser);
+            instructionSql.setString(2,nomUser);
+            instructionSql.executeUpdate();
+            //098f6bcd4621d373cade4e832627b4f6
+           
+           
+       } catch(Exception e) {
+                System.out.println(e);
+            }   
+       
+   }
     
         public static void close() {
         try {

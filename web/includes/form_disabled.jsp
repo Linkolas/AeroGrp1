@@ -14,6 +14,7 @@
         <%
             
             String[] num_membre = (String[]) request.getAttribute("infosMembres");
+            String[] infosUser  = (String[]) request.getAttribute("infosUsers");
             
         %>
         
@@ -49,16 +50,24 @@
             <TH colspan="2">Informations Utilisateur :  </TH>
         </TR>
         <%
-            String[] nomsChampsUser = {"Nom d'utilisateur :", "Mot de passe :", "Adresse e-mail :"};
-            String[] nameChampsUser = {"user"             , "passwd"      , "mail"};
-            int nbChampsUser = 3;
+            String[] nomsChampsUser = {"Nom d'utilisateur :", "Mot de passe :"};
+            String[] nameChampsUser = {"user"             , "passwd"};
+            int nbChampsUser = 2;
             
             for(int i=0; i<nbChampsUser; i++) { 
         %>
         <TR>
             <TD><%= nomsChampsUser[i] %></TD>
             <TD></TD>
-            <TD><input type="text" name="<%= nameChampsUser[i] %>" id="<%= nameChampsUser[i] %>" rows=1 cols=80 placeholder="Valeur par défaut" DISABLED></TD>
+            <TD><input type="text" name="<%= nameChampsUser[i] %>" id="<%= nameChampsUser[i] %>" rows=1 cols=80 placeholder="<% if(!(infosUser[i]== null))
+            { 
+                out.println(infosUser[i]);
+            } 
+            else { 
+                out.println("Valeur par défaut");
+                    
+                 }
+            %>" DISABLED></TD>
         </TR>
         <%
             }

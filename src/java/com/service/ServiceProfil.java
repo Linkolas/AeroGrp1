@@ -5,15 +5,11 @@
 package com.service;
 
 import com.dao.DaoProfil;
-import com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Map;
-import javax.lang.model.element.NestingKind;
 
 /**
  *
@@ -41,7 +37,7 @@ public class ServiceProfil {
                //retour.add(2,"PASS !!");
         }
         
-        DaoProfil.close();
+        //DaoProfil.close();
         
         return retour ;
     }
@@ -75,9 +71,21 @@ public class ServiceProfil {
            }
            if(bool == true) {
             DaoProfil.updateMembre2(prmNumMembre, prmMemb);
-            DaoProfil.close();    
+            //DaoProfil.close();    
            }
            
+    }
+    
+    public void updateUser(String nomUser, String passwdUser) {
+        
+        if(!"".equals(passwdUser)) {
+           String passwdEncode = ServiceConnexion.encode(passwdUser);
+           DaoProfil.updateUser (nomUser, passwdEncode);
+        }
+        //DaoProfil.close(); 
+        
+        
+                
     }
        
         
