@@ -84,8 +84,6 @@ public class ServiceProfil {
         }
         //DaoProfil.close(); 
         
-        
-                
     }
        
         
