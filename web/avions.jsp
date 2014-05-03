@@ -41,7 +41,7 @@
                     </tr>
                     <tr>
                         <td style='width: 150px; height: 400px; border-top: 1px black solid;'>
-                             <SELECT id="vols" name="vols" size="24" style="width: 150px; height: 395px;" onChange="selectVol(this.value);">
+                             <SELECT id="vols" name="vols" size="24" style="width: 150px; height: 395px;" onChange="selectAvion(this.value);">
                                 <% 
                                     List<Avion> avions = (ArrayList<Avion>) request.getAttribute("listeAvions");
                                     for(Avion avion : avions) {

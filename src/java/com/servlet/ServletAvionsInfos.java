@@ -39,10 +39,10 @@ public class ServletAvionsInfos extends HttpServlet {
             vue = "/includes/connexion.jsp";
         } else {
             vue = "/includes/avions_informations.jsp";
-            String numseq = request.getParameter("numseq");
+            String numavion = request.getParameter("numavion");
             
 
-                Avion avion = ServiceAvion.getAvion(1);
+                Avion avion = ServiceAvion.getAvion(Integer.parseInt(numavion));
                     request.setAttribute("avion", avion);
         }
         

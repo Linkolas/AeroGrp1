@@ -86,7 +86,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ServletAvionsInfos</servlet-name>
-        <url-pattern>/ServletAvionsInfos</url-pattern>
+        <url-pattern>/AvionsInfos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

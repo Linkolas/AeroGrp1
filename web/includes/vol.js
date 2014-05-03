@@ -28,3 +28,8 @@ function triVols() {
 function selectVol(numSeq) {
     ajax("InfosSeqVol?numseq="+numSeq, "affichage", "Chargement de la sequence de vol...");
 }
+
+function selectAvion(numAvion) {
+    
+    ajax("AvionsInfos?numavion="+numAvion, "affichage", "Chargement de l'avion...");
+}

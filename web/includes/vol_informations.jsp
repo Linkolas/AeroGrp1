@@ -10,43 +10,43 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-Avion avion = (Avion) request.getAttribute("avion");
-if(avion == null) {
+Vol vol = (Vol) request.getAttribute("vol");
+if(vol == null) {
     out.println("Cliquez sur une séquence de vol <BR/> pour afficher ses informations.");
 } else {
 %>
-    <span style="font-size: 170%;">Avion numéro : <%= avion.getNum_avion()%></span>
+    <span style="font-size: 170%;">Vol numéro <%= vol.getNum() %></span>
     <BR/>
-    De type : <%= avion.getType_avion()%>
+    en date du <%= vol.getDate() %>
     <BR/>
     <BR/>
     <TABLE style='margin-left: auto; margin-right: auto; text-align: left; width: 800px;'>
         <TR>
             <TD>
-                Immatriculé :  
+                Temps passé en vol : 
             </TD>
             <TD>
-                <%= avion.getImmatriculation() %>
+                <%= vol.getTemps() %> heure(s)
             </TD>
             <TD>
                 dont comprises dans un forfait : 
             </TD>
             <TD>
-                
+                <%= vol.getHeuresForfait() %> heure(s)
             </TD>
         </TR>
         <TR>
             <TD>
-                 
+                Prix spécial : 
             </TD>
             <TD>
-                
+                <%= (vol.getPrixSpecial() < 0 ? "Aucun" : vol.getPrixSpecial()) %>
             </TD>
             <TD>
                 Motif : 
             </TD>
             <TD>
-                
+                <%= vol.getMotif() %>
             </TD>
         </TR>
     </TABLE>

@@ -45,7 +45,7 @@ public class ServletAvions extends HttpServlet {
                 List<Avion> avions = ServiceAvion.getListeAvions();
                 request.setAttribute("taille", avions.size());
                 request.setAttribute("listeAvions", avions);
-                    //System.out.println(avions);
+                
             }
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);
     }
