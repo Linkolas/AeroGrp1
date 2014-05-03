@@ -46,7 +46,7 @@
                                     List<Avion> avions = (ArrayList<Avion>) request.getAttribute("listeAvions");
                                     for(Avion avion : avions) {
                                 %>
-                                <OPTION value="<%= avion.getNum_avion()%>"><%= avion %></OPTION>
+                                <OPTION value="<%= avion.getNum_avion()%>"><%= avion.getImmatriculation() %></OPTION>
                                 <%
                                     }
                                 %>

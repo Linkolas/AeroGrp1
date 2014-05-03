@@ -9,7 +9,6 @@ package com.servlet;
 import com.domaine.Avion;
 import com.service.ServiceAvion;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Quentin
  */
-public class ServletAvions extends HttpServlet {
+public class ServletAvionsInfos extends HttpServlet {
         String vue;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,22 +30,22 @@ public class ServletAvions extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
         //On vérifie que l'utilisateur est connecté
         HttpSession session = request.getSession();
-                if(session.getAttribute("leLogin") == null && session.getAttribute("role") != "admin" ) {
-                vue = "/ErreurConnexion";
-      
-            } else {
-                vue = "/avions.jsp";
-                String strNum = (String) session.getAttribute("numMembre");
-                List<Avion> avions = ServiceAvion.getListeAvions();
-                request.setAttribute("taille", avions.size());
-                request.setAttribute("listeAvions", avions);
-                    //System.out.println(avions);
-            }
+        if(session.getAttribute("leLogin") == null) {
+            vue = "/includes/connexion.jsp";
+        } else {
+            vue = "/includes/avions_informations.jsp";
+            String numseq = request.getParameter("numseq");
+            
+
+                Avion avion = ServiceAvion.getAvion(1);
+                    request.setAttribute("avion", avion);
+        }
+        
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);
     }
 
