@@ -9,6 +9,7 @@ package com.servlet;
 import com.domaine.Avion;
 import com.service.ServiceAvion;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,9 +42,18 @@ public class ServletAvionsInfos extends HttpServlet {
             vue = "/includes/avions_informations.jsp";
             String numavion = request.getParameter("numavion");
             
-
+                
                 Avion avion = ServiceAvion.getAvion(Integer.parseInt(numavion));
-                    request.setAttribute("avion", avion);
+                String immat = avion.getImmatriculation();
+                ArrayList<String> tableauInfosAvion = new ArrayList();
+                tableauInfosAvion.add(avion.getImmatriculation());
+                tableauInfosAvion.add(avion.getType_avion());
+                tableauInfosAvion.add(Float.toString(avion.getTaux()));
+                tableauInfosAvion.add(Float.toString(avion.getReduction()));
+                request.setAttribute("avion", avion);
+                request.setAttribute("infosAvions", tableauInfosAvion);
+                request.setAttribute("immat", immat);
+                
         }
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);

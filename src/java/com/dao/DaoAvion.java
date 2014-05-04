@@ -4,10 +4,12 @@
  */
 package com.dao;
 
+import static com.dao.DaoProfil.laConnexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -54,6 +56,51 @@ public class DaoAvion {
         }
         
         return result;
+    }
+    
+    static public void updateAvion(String prmImmat, ArrayList prmAvion){
+       
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            ArrayList nom = new ArrayList();
+            nom.add("Type_Avion");
+            nom.add("Taux");
+            nom.add("Reduction_semaine");
+            
+            
+            String query = "UPDATE avions SET ";
+            String set = "";
+            for(int i = 0; i < prmAvion.size()-1; i++) {
+                
+                if(prmAvion.get(i) != null) {
+                    if(!"".equals(set)) {    
+                        set +=", ";
+                    }
+                set += nom.get(i) + " = ? ";
+               }
+            }
+            query += set;
+            query += "WHERE Immatriculation = ?";
+            System.out.println(query); 
+            int index =1;
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            for(int i = 0; i < prmAvion.size()-1; i++)
+            {
+                if(prmAvion.get(i) != null) {
+                    if (prmAvion.get(i).getClass() == String.class) {
+                        instructionSql.setString(index, (String) prmAvion.get(i));
+                    }
+                    index +=1;
+                }
+            }
+            
+            instructionSql.setString(index, prmImmat);
+            instructionSql.executeUpdate();
+            
+            }
+        catch(Exception e) {
+                System.out.println(e);
+            }
     }
     
     

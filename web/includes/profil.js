@@ -2,7 +2,8 @@ function enableInputs() {
     var nameChamps = 
                  ["badge"            , "nom"              , "prenom"         , "adresse", "code_postal",
                   "ville"            , "tel"              , "portable"       , "email"  , "prof"       ,
-                  "date_naiss"       , "lieu_naiss"       , "carte_fed"      , "user"   , "passwd"];
+                  "date_naiss"       , "lieu_naiss"       , "carte_fed"      , "user"   , "passwd", 
+                  "immat"            , "type"             , "taux"           , "reduc"];
     for(index = 1; index < nameChamps.length; index++) {
         document.getElementById(nameChamps[index]).disabled = false;
     }

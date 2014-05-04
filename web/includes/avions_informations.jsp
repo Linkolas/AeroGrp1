@@ -4,6 +4,7 @@
     Author     : Quentin
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.domaine.Avion"%>
 <%@page import="com.domaine.Instructeur"%>
 <%@page import="com.domaine.Vol"%>
@@ -11,48 +12,56 @@
 
 <% 
 Avion avion = (Avion) request.getAttribute("avion");
+ArrayList<String> infosAvions  = (ArrayList<String>) request.getAttribute("infosAvions");
 
 if(avion == null) {
     out.println("Cliquez sur un avion <BR/> pour afficher ses informations.");
 } else {
 %>
     <span style="font-size: 170%;">Avion numéro <%= avion.getNum_avion()%></span>
-    <BR/>
-    immatriculé : <%=  avion.getImmatriculation() %>
-    <BR/>
-    <BR/>
-    <TABLE style='margin-left: auto; margin-right: auto; text-align: left; width: 800px;'>
-        <TR>
-            <TD>
-                Type d'avion : 
-            </TD>
-            <TD>
-                <%= avion.getType_avion() %> heure(s)
-            </TD>
-            <TD>
-                dont comprises dans un forfait : 
-            </TD>
-            <TD>
-               
-            </TD>
+    
+    <FORM id="doodle" method="post">
+    <table>
+        <TR> 
+            <TH colspan="2">Informations avion :  </TH>
         </TR>
+        
+        <%
+            
+          //String[] infosAvions  = (String[]) request.getAttribute("infosAvions");
+            
+        %>
+        
+        
+        <%
+            String[] nomsChamps = {"Immatriculation :"          , "Type :"              , "Taux :"         , "Reduction semaine :"};
+            String[] nameChamps = {"immat"                      , "type"                , "taux"           , "reduc"};
+            int nbChamps = 4;
+            
+            for(int i=0; i<nbChamps; i++) { 
+        %>
         <TR>
-            <TD>
-                Prix spécial : 
-            </TD>
-            <TD>
-                
-            </TD>
-            <TD>
-                Motif : 
-            </TD>
-            <TD>
-                
-            </TD>
+            <TD><%= nomsChamps[i] %></TD>
+            <TD></TD>
+            <TD><input type="text" name="<%= nameChamps[i] %>" id="<%= nameChamps[i] %>" rows=1 cols=80 placeholder="<% if(!(infosAvions.get(i)== null))
+            { 
+                out.println(infosAvions.get(i));
+            } 
+            else { 
+                out.println("Valeur par défaut");
+                    
+                 }
+            %>" DISABLED></TD>
         </TR>
-    </TABLE>
-    <BR/>
-    <BR/>
+        <%
+            }
+        %>
+        
+    </table>
+    <% // Placé dans une DIV pour profil.js %>
+    <INPUT type="hidden" name="modificationProfil" value="1"/>
+    <div id="submitButton"><input type="button" value="Modifier" onClick="javascript:enableInputs();"></div>
+</FORM>
     
 <%
 }

@@ -9,6 +9,7 @@ package com.servlet;
 import com.domaine.Avion;
 import com.service.ServiceAvion;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,11 +41,25 @@ public class ServletAvions extends HttpServlet {
                 vue = "/ErreurConnexion";
       
             } else {
+                ServiceAvion conn = new ServiceAvion();
                 vue = "/avions.jsp";
                 String strNum = (String) session.getAttribute("numMembre");
                 List<Avion> avions = ServiceAvion.getListeAvions();
                 request.setAttribute("taille", avions.size());
                 request.setAttribute("listeAvions", avions);
+               
+                if("1".equals(request.getParameter("modificationProfil")))
+                  {
+                     ArrayList<String> tableauInfos = new ArrayList();
+                     tableauInfos.add(request.getParameter("type"));
+                     tableauInfos.add(request.getParameter("taux"));
+                     tableauInfos.add(request.getParameter("reduc"));
+                     conn.updateAvion((String) request.getAttribute("immat"), null);
+                     
+                    //String passUser = request.getParameter("passwd");
+                   // String pseudoUser = (String) session.getAttribute("leLogin");
+                   // conn.updateUser(pseudoUser, passUser);
+                  }
                 
             }
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);

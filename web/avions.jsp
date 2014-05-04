@@ -16,6 +16,7 @@
         <link rel="stylesheet" type="text/css" href="includes/global.css"/>
         <script><jsp:include page="includes/ajax.js"/></script>
         <script><jsp:include page="includes/vol.js"/></script>
+        <script><jsp:include page="includes/avion.js"/></script>
         <title>Vols</title>
     </head>
     <body>
