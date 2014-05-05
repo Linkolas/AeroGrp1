@@ -52,7 +52,6 @@ public class ServletMembre extends HttpServlet {
                 ServiceMembre conn = new ServiceMembre();
                 List<Membre> nomsMembres = conn.toutlesMembres();
                 request.setAttribute("nomsMembres", nomsMembres);
-                request.setAttribute("role", session.getAttribute("role"));
             }
             else  vue = "/ErreurConnexion";
         }

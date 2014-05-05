@@ -5,7 +5,6 @@
 package com.service;
 
 import com.dao.DaoAdmin;
-import com.dao.DaoMembre;
 import com.domaine.Membre;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,7 +32,7 @@ public class ServiceAdmin {
         }
         catch(SQLException se){
         }
-        DaoMembre.close();
+        DaoAdmin.close();
         
         return lmemb;
     }

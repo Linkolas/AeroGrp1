@@ -4,7 +4,6 @@
  */
 package com.dao;
 
-import static com.dao.DaoProfil.laConnexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

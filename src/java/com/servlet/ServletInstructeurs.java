@@ -53,7 +53,6 @@ public class ServletInstructeurs extends HttpServlet {
                 List<Instructeur> instructeurs = ServiceInstructeur.getListeInstructeurs();
                 out.println("michel");
                 request.setAttribute("instructeurs", instructeurs);
-                request.setAttribute("role", session.getAttribute("role"));
             }
             else  vue = "/ErreurConnexion";
         }
