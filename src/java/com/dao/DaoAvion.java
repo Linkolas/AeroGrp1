@@ -69,7 +69,7 @@ public class DaoAvion {
             
             String query = "UPDATE avions SET ";
             String set = "";
-            for(int i = 0; i < prmAvion.size()-1; i++) {
+            for(int i = 0; i < prmAvion.size(); i++) {
                 
                 if(prmAvion.get(i) != null) {
                     if(!"".equals(set)) {    
@@ -88,6 +88,8 @@ public class DaoAvion {
                 if(prmAvion.get(i) != null) {
                     if (prmAvion.get(i).getClass() == String.class) {
                         instructionSql.setString(index, (String) prmAvion.get(i));
+                    } else if (prmAvion.get(i).getClass() == Float.class) {
+                        instructionSql.setFloat(index, (Float) prmAvion.get(index));
                     }
                     index +=1;
                 }

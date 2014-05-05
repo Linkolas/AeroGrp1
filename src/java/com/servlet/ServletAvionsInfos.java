@@ -42,17 +42,17 @@ public class ServletAvionsInfos extends HttpServlet {
             vue = "/includes/avions_informations.jsp";
             String numavion = request.getParameter("numavion");
             
-                
+                //Tableau qui affiche les éléments dans les champs
                 Avion avion = ServiceAvion.getAvion(Integer.parseInt(numavion));
-                String immat = avion.getImmatriculation();
-                ArrayList<String> tableauInfosAvion = new ArrayList();
+                ArrayList tableauInfosAvion = new ArrayList();
                 tableauInfosAvion.add(avion.getImmatriculation());
                 tableauInfosAvion.add(avion.getType_avion());
-                tableauInfosAvion.add(Float.toString(avion.getTaux()));
-                tableauInfosAvion.add(Float.toString(avion.getReduction()));
+                tableauInfosAvion.add(avion.getTaux());
+                tableauInfosAvion.add(avion.getReduction());
                 request.setAttribute("avion", avion);
                 request.setAttribute("infosAvions", tableauInfosAvion);
-                request.setAttribute("immat", immat);
+                session.setAttribute("immat", avion.getImmatriculation());
+                //System.out.println(tableauInfosAvion);
                 
         }
         

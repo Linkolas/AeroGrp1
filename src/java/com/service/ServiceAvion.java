@@ -98,6 +98,7 @@ public class ServiceAvion {
     }
     
     public void updateAvion(String prmImmat, ArrayList prmAvion) {
+        System.out.println(prmImmat);
         boolean bool = false;
          for(int i = 0; i < prmAvion.size(); i++)
          {

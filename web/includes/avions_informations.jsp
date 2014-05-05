@@ -12,7 +12,7 @@
 
 <% 
 Avion avion = (Avion) request.getAttribute("avion");
-ArrayList<String> infosAvions  = (ArrayList<String>) request.getAttribute("infosAvions");
+ArrayList infosAvions  = (ArrayList<String>) request.getAttribute("infosAvions");
 
 if(avion == null) {
     out.println("Cliquez sur un avion <BR/> pour afficher ses informations.");

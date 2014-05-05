@@ -50,15 +50,13 @@ public class ServletAvions extends HttpServlet {
                
                 if("1".equals(request.getParameter("modificationProfil")))
                   {
-                     ArrayList<String> tableauInfos = new ArrayList();
+                     ArrayList tableauInfos = new ArrayList();
                      tableauInfos.add(request.getParameter("type"));
-                     tableauInfos.add(request.getParameter("taux"));
-                     tableauInfos.add(request.getParameter("reduc"));
-                     conn.updateAvion((String) request.getAttribute("immat"), null);
-                     
-                    //String passUser = request.getParameter("passwd");
-                   // String pseudoUser = (String) session.getAttribute("leLogin");
-                   // conn.updateUser(pseudoUser, passUser);
+                     tableauInfos.add(Float.parseFloat(request.getParameter("taux")));
+                     tableauInfos.add(Float.parseFloat(request.getParameter("reduc")));
+                     conn.updateAvion((String) session.getAttribute("immat"), tableauInfos);
+                     System.out.println(session.getAttribute("immat"));
+
                   }
                 
             }
