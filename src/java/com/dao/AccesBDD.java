@@ -16,15 +16,15 @@ import java.sql.SQLException;
 public class AccesBDD {
     static Connection laConnexion = null;
     static ResultSet result       = null;
-    static final String URL    = "jdbc:postgresql://192.168.12.101:5432/aero2";
-    static final String USER   = "michel";
-    static final String PASSWD = "michel42";
+    static final String URL    = "jdbc:mysql://78.219.192.97:3306/aerogrp1";
+    static final String USER   = "test";
+    static final String PASSWD = "test";
     
     static public Connection getConnexion() {
         laConnexion = null;
         
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
         } catch (ClassNotFoundException ex) {
