@@ -4,6 +4,7 @@
  */
 package com.dao;
 
+import static com.dao.AccesBDD.laConnexion;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,15 +17,15 @@ import java.sql.SQLException;
 public class AccesBDD {
     static Connection laConnexion = null;
     static ResultSet result       = null;
-    static final String URL    = "jdbc:mysql://78.219.192.97:3306/aerogrp1";
-    static final String USER   = "test";
-    static final String PASSWD = "test";
+    static final String URL    = "jdbc:postgresql://192.168.12.101:5432/aero2";
+    static final String USER   = "michel";
+    static final String PASSWD = "michel42";
     
     static public Connection getConnexion() {
         laConnexion = null;
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             System.out.println("Driver O.K.");
             laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
         } catch (ClassNotFoundException ex) {
