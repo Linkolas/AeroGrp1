@@ -52,8 +52,16 @@ public class ServletAvions extends HttpServlet {
                   {
                      ArrayList tableauInfos = new ArrayList();
                      tableauInfos.add(request.getParameter("type"));
-                     tableauInfos.add(Float.parseFloat(request.getParameter("taux")));
-                     tableauInfos.add(Float.parseFloat(request.getParameter("reduc")));
+                     if(request.getParameter("taux") != "") {
+                         tableauInfos.add(Float.parseFloat(request.getParameter("taux")));
+                     } else {
+                         tableauInfos.add(null);
+                     }
+                     if(request.getParameter("reduc") != "") {
+                        tableauInfos.add(Float.parseFloat(request.getParameter("reduc")));
+                     } else {
+                         tableauInfos.add(null);
+                     }
                      conn.updateAvion((String) session.getAttribute("immat"), tableauInfos);
                      System.out.println(session.getAttribute("immat"));
 

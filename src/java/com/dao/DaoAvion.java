@@ -66,6 +66,7 @@ public class DaoAvion {
             nom.add("Taux");
             nom.add("Reduction_semaine");
             
+            //System.out.println(prmAvion);
             
             String query = "UPDATE avions SET ";
             String set = "";
@@ -80,22 +81,24 @@ public class DaoAvion {
             }
             query += set;
             query += "WHERE Immatriculation = ?";
-            System.out.println(query); 
-            int index =1;
+            //System.out.println(query); 
+            int index = 1;
             PreparedStatement instructionSql = laConnexion.prepareStatement(query);
-            for(int i = 0; i < prmAvion.size()-1; i++)
+            for(int i = 0; i < prmAvion.size(); i++)
             {
                 if(prmAvion.get(i) != null) {
                     if (prmAvion.get(i).getClass() == String.class) {
                         instructionSql.setString(index, (String) prmAvion.get(i));
                     } else if (prmAvion.get(i).getClass() == Float.class) {
-                        instructionSql.setFloat(index, (Float) prmAvion.get(index));
+                        instructionSql.setFloat(index, (Float) prmAvion.get(i));
                     }
+                    //System.out.println(index + " = " + prmAvion.get(i));
                     index +=1;
                 }
             }
             
             instructionSql.setString(index, prmImmat);
+            //System.out.println("4 = " +prmImmat);
             instructionSql.executeUpdate();
             
             }

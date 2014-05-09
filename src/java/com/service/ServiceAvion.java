@@ -6,14 +6,11 @@ package com.service;
 
 import com.dao.DaoAvion;
 import com.dao.DaoForfait;
-import com.dao.DaoProfil;
 import com.domaine.Avion;
 import com.domaine.Forfait;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,27 +95,25 @@ public class ServiceAvion {
     }
     
     public void updateAvion(String prmImmat, ArrayList prmAvion) {
-        System.out.println(prmImmat);
+        //System.out.println(prmImmat);
         boolean bool = false;
-         for(int i = 0; i < prmAvion.size(); i++)
-         {
+        for(int i = 0; i < prmAvion.size(); i++)
+        {
             if(prmAvion.get(i) == "") {
                 prmAvion.set(i, null);
-                
-                
             } 
         }
            
-           for(int i = 0; i < prmAvion.size(); i++) 
-           {
-               if(prmAvion.get(i) != null) {
+        for(int i = 0; i < prmAvion.size(); i++) 
+        {
+            if(prmAvion.get(i) != null) {
                 bool = true;
-               }
-           }
-           if(bool == true) {
+                break;
+            }
+        }
+        if(bool == true) {
             DaoAvion.updateAvion(prmImmat, prmAvion);
-            //DaoProfil.close();    
-           }
-    }
-           
+            DaoAvion.close();    
+        }
+     }           
 }
