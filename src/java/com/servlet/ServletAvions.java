@@ -37,7 +37,7 @@ public class ServletAvions extends HttpServlet {
         
         //On vérifie que l'utilisateur est connecté
         HttpSession session = request.getSession();
-                if(session.getAttribute("leLogin") == null && session.getAttribute("role") != "admin" ) {
+            if(!"admin".equals((String) session.getAttribute("role"))) {
                 vue = "/ErreurConnexion";
       
             } else {
