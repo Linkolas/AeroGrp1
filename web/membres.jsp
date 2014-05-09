@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="includes/global.css"/>
         <script><jsp:include page="includes/ajax.js"/></script>
         <script><jsp:include page="includes/membre.js"/></script>
+        <script><jsp:include page="includes/profil.js"/></script>
         <title>Affichage des membres de l'aéroclub</title>
     </head>
     <body>

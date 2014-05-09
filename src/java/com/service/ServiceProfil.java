@@ -42,6 +42,20 @@ public class ServiceProfil {
         return retour ;
     }
     
+    public String getMembreLogin(Integer prmNumMembre) throws SQLException {
+        String loginMembre = null;
+        
+        try {
+            ResultSet result = DaoProfil.getMembreLogin(prmNumMembre);
+            result.next();
+            loginMembre = result.getString("name");
+        }
+        catch (SQLException se) {
+            
+        }
+        return loginMembre;
+    }
+    
     public void updateMembre2(Integer prmNumMembre, ArrayList prmMemb) {
         boolean bool = false;
          for(int i = 0; i < prmMemb.size(); i++)

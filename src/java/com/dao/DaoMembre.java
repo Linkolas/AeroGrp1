@@ -52,8 +52,9 @@ public class DaoMembre {
                 
             String query;
             query = "SELECT * "
-                   +"FROM membres " 
-                   +"WHERE nom = ? "
+                   +"FROM membres, users " 
+                   +"WHERE users.numMembre = membres.Num_Membre "
+                   +"AND nom = ? "
                    +"AND prenom = ? ";
             PreparedStatement instructionSql = laConnexion.prepareStatement(query);
             instructionSql.setString(1,nom_membre);

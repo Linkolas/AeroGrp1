@@ -4,13 +4,12 @@
  */
 package com.servlet;
 
-import com.domaine.Instructeur;
-import com.service.ServiceInstructeur;
+import com.service.ServiceProfil;
 import java.io.IOException;
-import static java.lang.System.out;
-import java.util.List;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,9 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author cyril.delanghe
  */
-@WebServlet(name = "ServletInstructeurs", urlPatterns = {"/ServletInstructeurs"})
+public class ServletGPMembre extends HttpServlet {
 
-public class ServletInstructeurs extends HttpServlet {
 
     String vue;
     
@@ -42,18 +40,22 @@ public class ServletInstructeurs extends HttpServlet {
         
         //On vérifie que l'utilisateur est connecté
         HttpSession session = request.getSession();
-        if(session.getAttribute("leLogin") == null) {
+        if(!"admin".equals((String) session.getAttribute("role")) ){
             vue = "/ErreurConnexion";
-        } else {
-            String role = (String) session.getAttribute("role");
-            //out.println(session.getAttribute("role"));
-            if("admin".equals(role) ){
-                vue = "/instructeur.jsp";
-                //ServiceInstructeur conn = new ServiceInstructeur();
-                List<Instructeur> instructeurs = ServiceInstructeur.getListeInstructeurs();
-                request.setAttribute("instructeurs", instructeurs);
+        }
+        else{
+            try {
+                vue = "/includes/form_disabled.jsp";
+                String numMembre = request.getParameter("membre");
+                ServiceProfil conn = new ServiceProfil();
+                String[] infosMembres = conn.getMembreProfil(Integer.parseInt(numMembre));
+                String login = conn.getMembreLogin(Integer.parseInt(numMembre));
+                String[] infosUsers = {login , "***********"};
+                request.setAttribute("infosMembres", infosMembres);
+                request.setAttribute("infosUsers", infosUsers);
+            } catch (SQLException ex) {
+                Logger.getLogger(ServletGPMembre.class.getName()).log(Level.SEVERE, null, ex);
             }
-            else  vue = "/ErreurConnexion";
         }
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);
@@ -87,7 +89,7 @@ public class ServletInstructeurs extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+            processRequest(request, response);
     }
 
     /**

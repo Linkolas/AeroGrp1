@@ -39,6 +39,25 @@ public class DaoProfil {
         return result;
     }
     
+    static public ResultSet getMembreLogin(Integer nummembre){
+        result = null;
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query;
+            query = "SELECT name "
+                    +"FROM users " 
+                    +"WHERE nummembre=? ";
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            instructionSql.setInt(1,nummembre);
+            result = instructionSql.executeQuery();
+            }
+        catch(Exception e) {
+                System.out.println(e);
+            }
+        return result;
+    }
+    
    static public void updateMembre2(Integer num_membre, ArrayList memb){
        
         try {
