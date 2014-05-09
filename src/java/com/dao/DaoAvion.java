@@ -107,6 +107,22 @@ public class DaoAvion {
             }
     }
     
+    static public void deleteAvion(int numAvion) {
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query = "DELETE FROM avions WHERE Num_Avion = ?";
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            instructionSql.setInt(1, numAvion);
+            
+            instructionSql.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+ 
+    } 
+    
     
     
     public static void close() {

@@ -115,5 +115,16 @@ public class ServiceAvion {
             DaoAvion.updateAvion(prmImmat, prmAvion);
             DaoAvion.close();    
         }
-     }           
+     }
+    
+    public void deleteAvion(String numAvion) {
+        deleteAvion(Integer.parseInt(numAvion));
+    }
+    
+    public void deleteAvion(int numAvion) {
+        
+        deleteAvion(numAvion);
+        DaoAvion.close();
+    }
+            
 }
