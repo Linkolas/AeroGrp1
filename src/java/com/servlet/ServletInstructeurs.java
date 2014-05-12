@@ -42,18 +42,13 @@ public class ServletInstructeurs extends HttpServlet {
         
         //On vérifie que l'utilisateur est connecté
         HttpSession session = request.getSession();
-        if(session.getAttribute("leLogin") == null) {
+        if(!"admin".equals((String) session.getAttribute("role"))) {
             vue = "/ErreurConnexion";
+            
         } else {
-            String role = (String) session.getAttribute("role");
-            //out.println(session.getAttribute("role"));
-            if("admin".equals(role) ){
-                vue = "/instructeur.jsp";
-                //ServiceInstructeur conn = new ServiceInstructeur();
-                List<Instructeur> instructeurs = ServiceInstructeur.getListeInstructeurs();
-                request.setAttribute("instructeurs", instructeurs);
-            }
-            else  vue = "/ErreurConnexion";
+            vue = "/instructeur.jsp";
+            List<Instructeur> instructeurs = ServiceInstructeur.getListeInstructeurs();
+            request.setAttribute("instructeurs", instructeurs);
         }
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);

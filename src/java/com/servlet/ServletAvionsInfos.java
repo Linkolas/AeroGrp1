@@ -38,6 +38,7 @@ public class ServletAvionsInfos extends HttpServlet {
         HttpSession session = request.getSession();
         if(session.getAttribute("leLogin") == null) {
             vue = "/includes/connexion.jsp";
+            
         } else {
             vue = "/includes/avions_informations.jsp";
             String numavion = request.getParameter("numavion");
@@ -53,7 +54,6 @@ public class ServletAvionsInfos extends HttpServlet {
                 request.setAttribute("infosAvions", tableauInfosAvion);
                 session.setAttribute("immat", avion.getImmatriculation());
                 //System.out.println(tableauInfosAvion);
-                
         }
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);

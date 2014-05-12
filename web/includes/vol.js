@@ -30,6 +30,12 @@ function selectVol(numSeq) {
 }
 
 function selectAvion(numAvion) {
-    
     ajax("AvionsInfos?numavion="+numAvion, "affichage", "Chargement de l'avion...");
+    document.getElementById("delete").setAttribute("onClick", "deleteAvion("+ numAvion +");");
+}
+
+function deleteAvion(numAvion) {
+    if(confirm("Voulez-vous vraiment supprimer l'avion n°"+ numAvion + "?")) {
+        self.location.href= "DeleteAvion?numAvion="+numAvion;
+    }
 }

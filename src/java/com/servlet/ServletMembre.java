@@ -42,18 +42,14 @@ public class ServletMembre extends HttpServlet {
         
         //On vérifie que l'utilisateur est connecté
         HttpSession session = request.getSession();
-        if(session.getAttribute("leLogin") == null) {
+        if(!"admin".equals((String) session.getAttribute("role"))) {
             vue = "/ErreurConnexion";
+            
         } else {
-            String role = (String) session.getAttribute("role");
-            //out.println(session.getAttribute("role"));
-            if("admin".equals(role) ){
-                vue = "/membres.jsp";
-                ServiceMembre conn = new ServiceMembre();
-                List<Membre> nomsMembres = conn.toutlesMembres();
-                request.setAttribute("nomsMembres", nomsMembres);
-            }
-            else  vue = "/ErreurConnexion";
+            vue = "/membres.jsp";
+            ServiceMembre conn = new ServiceMembre();
+            List<Membre> nomsMembres = conn.toutlesMembres();
+            request.setAttribute("nomsMembres", nomsMembres);
         }
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);
