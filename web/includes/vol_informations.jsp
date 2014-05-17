@@ -20,7 +20,7 @@ if(vol == null) {
     en date du <%= vol.getDate() %>
     <BR/>
     <BR/>
-    <TABLE style='margin-left: auto; margin-right: auto; text-align: left; width: 800px;'>
+    <TABLE style='margin-left: auto; margin-right: auto; text-align: left;'>
         <TR>
             <TD>
                 Temps passé en vol : 
@@ -113,7 +113,7 @@ if(vol == null) {
     if(vol.getPrixSpecial() < 0) {
         float total = vol.getTaux()-vol.getReductionSemaine();
         if(in != null) total += vol.getTauxInstructeur();
-        total *= vol.getTemps();
+        total *= vol.getTemps()-vol.getHeuresForfait();
         out.println("TOTAL : "+total+" €");
     } else {
         out.println("TOTAL : "+vol.getPrixSpecial()+" € (prix spécial)");

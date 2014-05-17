@@ -48,6 +48,10 @@
         <servlet-name>ServletGPMembre</servlet-name>
         <servlet-class>com.servlet.ServletGPMembre</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAdminVols</servlet-name>
+        <servlet-class>com.servlet.ServletAdminVols</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>ServletGPMembre</servlet-name>
         <url-pattern>/AdminProfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdminVols</servlet-name>
+        <url-pattern>/AdminVols</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

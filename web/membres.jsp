@@ -16,6 +16,7 @@
         <script><jsp:include page="includes/ajax.js"/></script>
         <script><jsp:include page="includes/membre.js"/></script>
         <script><jsp:include page="includes/profil.js"/></script>
+        <script><jsp:include page="includes/vol.js"/></script>
         <title>Affichage des membres de l'aéroclub</title>
     </head>
     <body>
@@ -63,7 +64,7 @@
                                 <OPTION>Z</OPTION>
                             </SELECT>
                         </td>
-                        <td style='border-left: 1px black solid;'>
+                        <td style='border-left: 1px black solid; width: 900px;'>
                             <jsp:include page ="includes/menu_admin.jsp"/>
                         </td>
                     </tr>

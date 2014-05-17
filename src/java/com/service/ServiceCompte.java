@@ -30,7 +30,7 @@ public class ServiceCompte {
             ResultSet result = DaoCompte.getCompte(nummem);
             while(result.next()) {
                 OperationCompte ope = new OperationCompte();
-                ope.setDateOperation(result.getDate("date_opration"));
+                ope.setDateOperation(result.getDate("date_operation"));
                 ope.setCommentaire(result.getString("commentaire"));
                 ope.setAutocreation(result.getBoolean("autocreation"));
                 ope.setNumOperation(result.getInt("num_compte"));
