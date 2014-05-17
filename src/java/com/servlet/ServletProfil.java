@@ -66,7 +66,7 @@ public class ServletProfil extends HttpServlet {
                      tableauInfos.add(request.getParameter("date_naiss"));
                      tableauInfos.add(request.getParameter("lieu_naiss"));
                      tableauInfos.add(request.getParameter("carte_fed"));
-                     //conn.updateMembre2(Integer.parseInt(sessionNumMembre), tableauInfos);
+                     conn.updateMembre2(Integer.parseInt(sessionNumMembre), tableauInfos);
                      
                     String passUser = request.getParameter("passwd");
                     String pseudoUser = (String) session.getAttribute("leLogin");

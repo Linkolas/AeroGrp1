@@ -123,7 +123,7 @@ public class ServiceAvion {
     
     public void deleteAvion(int numAvion) {
         
-        deleteAvion(numAvion);
+        DaoAvion.deleteAvion(numAvion);
         DaoAvion.close();
     }
             
