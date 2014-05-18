@@ -35,6 +35,6 @@ function adminVol(numSeq) {
 
 function deleteVol(numSeq) {
     if(confirm("Voulez-vous vraiment supprimer le vol n°"+ numSeq + "?")) {
-        self.location.href= "/DeleteVol?numSeq="+numSeq;
+        self.location.href= "DeleteVol?numSeq="+numSeq;
     }
 }

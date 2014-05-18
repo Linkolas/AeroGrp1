@@ -59,7 +59,7 @@
     <servlet>
         <servlet-name>ServletDeleteVol</servlet-name>
         <servlet-class>com.servlet.ServletDeleteVol</servlet-class>
-    </servlet>
+    </servlet> 
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/Index</url-pattern>

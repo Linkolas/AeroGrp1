@@ -15,6 +15,6 @@ function selectAvion(numAvion) {
 
 function deleteAvion(numAvion) {
     if(confirm("Voulez-vous vraiment supprimer l'avion n°"+ numAvion + "?")) {
-        self.location.href= "/DeleteAvion?numAvion="+numAvion;
+        self.location.href= "DeleteAvion?numAvion="+numAvion;
     }
 }
