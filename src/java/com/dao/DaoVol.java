@@ -62,6 +62,22 @@ public class DaoVol {
         return result;
     }
     
+    static public void deleteVol(int num) {
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query = "DELETE FROM seq_vol WHERE Num_Seq = ?";
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            instructionSql.setInt(1, num);
+            
+            instructionSql.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+ 
+    } 
+    
     public static void close() {
         try {
             laConnexion.close();

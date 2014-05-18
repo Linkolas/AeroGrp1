@@ -44,7 +44,7 @@
     </tr>
     <tr>
         <td style='border-top: 1px black solid;'>
-            <SELECT id="vols" name="vols" size="24" style="width: 150px; height: 300px;" onChange="selectVol(this.value);">
+            <SELECT id="vols" name="vols" size="24" style="width: 150px; height: 275px;" onChange="selectVol(this.value); adminVol(this.value);">
                 <% 
                     List<Vol> vols = (ArrayList<Vol>) request.getAttribute("listeVols");
                     for(Vol vol : vols) {
@@ -54,6 +54,8 @@
                    }
                 %>
             </SELECT>
+            <input id="addVol" type="button" value="Ajouter"/>
+            <input id="delVol" type="button" value="Suppr."/>
         </td>
     </tr>
 </table>

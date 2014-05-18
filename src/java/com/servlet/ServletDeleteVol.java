@@ -4,7 +4,7 @@
  */
 package com.servlet;
 
-import com.service.ServiceAvion;
+import com.service.ServiceVol;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  * @author quentin.vauthier
  */
 @WebServlet(name = "ServletDeleteAvion", urlPatterns = {"/DeleteAvion"})
-public class ServletDeleteAvion extends HttpServlet {
+public class ServletDeleteVol extends HttpServlet {
     String vue;
     /**
      * Processes requests for both HTTP
@@ -40,10 +40,9 @@ public class ServletDeleteAvion extends HttpServlet {
                 vue = "/ErreurConnexion";
       
             } else {
-                ServiceAvion conn = new ServiceAvion();
-                vue = "/Avions";
-                String numAvion = (String) request.getParameter("numAvion");
-                conn.deleteAvion(numAvion);
+                vue = "/Membres";
+                String numSeq = (String) request.getParameter("numSeq");
+                ServiceVol.deleteVol(Integer.parseInt(numSeq));
                 
             }
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);

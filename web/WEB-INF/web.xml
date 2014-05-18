@@ -52,6 +52,14 @@
         <servlet-name>ServletAdminVols</servlet-name>
         <servlet-class>com.servlet.ServletAdminVols</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletDeleteAvion</servlet-name>
+        <servlet-class>com.servlet.ServletDeleteAvion</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletDeleteVol</servlet-name>
+        <servlet-class>com.servlet.ServletDeleteVol</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>ServletAdminVols</servlet-name>
         <url-pattern>/AdminVols</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDeleteAvion</servlet-name>
+        <url-pattern>/DeleteAvion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletDeleteVol</servlet-name>
+        <url-pattern>/DeleteVol</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

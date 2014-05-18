@@ -86,4 +86,10 @@ public class ServiceVol {
         
         return vol;
     }
+    
+    static public void deleteVol(int num) {
+        
+        DaoVol.deleteVol(num);
+        DaoVol.close();
+    }
 }

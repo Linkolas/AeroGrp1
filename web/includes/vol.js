@@ -29,3 +29,12 @@ function selectVol(numSeq) {
     ajax("InfosSeqVol?numseq="+numSeq, "affichage", "Chargement de la sequence de vol...");
 }
 
+function adminVol(numSeq) {
+    document.getElementById("delVol").setAttribute("onClick", "deleteVol("+ numSeq +");");
+}
+
+function deleteVol(numSeq) {
+    if(confirm("Voulez-vous vraiment supprimer le vol n°"+ numSeq + "?")) {
+        self.location.href= "/DeleteVol?numSeq="+numSeq;
+    }
+}
