@@ -133,6 +133,43 @@ public class DaoProfil {
        
    }
     
+    static public void updateUseradmin (String numMembre, String nomUser, String passwdUser) {
+       try {
+           
+           String query = "UPDATE users SET password = ? ,name = ? WHERE numMembre = ? ;" ;
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            instructionSql.setString(1,passwdUser);
+            instructionSql.setString(2,nomUser);
+            instructionSql.setString(3,numMembre);
+            System.out.println(instructionSql);
+            instructionSql.executeUpdate();
+            //098f6bcd4621d373cade4e832627b4f6
+           
+           
+       } catch(Exception e) {
+                System.out.println(e);
+            }   
+       
+   }
+    
+    static public void updateUseradmin2 (String numMembre, String nomUser) {
+       try {
+           
+           String query = "UPDATE users SET name = ? WHERE numMembre = ? ;" ;
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            instructionSql.setString(1,nomUser);
+            instructionSql.setString(2,numMembre);
+            System.out.println(instructionSql);
+            instructionSql.executeUpdate();
+            //098f6bcd4621d373cade4e832627b4f6
+           
+           
+       } catch(Exception e) {
+                System.out.println(e);
+            }   
+       
+   }
+    
         public static void close() {
         try {
             //result.close();

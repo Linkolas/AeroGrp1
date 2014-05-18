@@ -53,6 +53,7 @@ public class ServletGPMembre extends HttpServlet {
                 String[] infosUsers = {login , "***********"};
                 request.setAttribute("infosMembres", infosMembres);
                 request.setAttribute("infosUsers", infosUsers);
+                session.setAttribute("numGMembre",numMembre);
             } catch (SQLException ex) {
                 Logger.getLogger(ServletGPMembre.class.getName()).log(Level.SEVERE, null, ex);
             }

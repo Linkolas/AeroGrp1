@@ -23,7 +23,7 @@
             String[] nomsChamps = {"N°Badge :"          , "Nom :"              , "Prénom :"         , "Adresse :", "Code Postal :", 
                                    "Ville :"            , "Telephone :"        , "Portable :"       , "E-mail :" , "Profession :" ,
                                    "Date de naissance :", "Lieu de naissance :", "Carte fédérale :"};
-            String[] nameChamps = {"badge"            , "nom"              , "prenom"         , "adresse", "code_postal",
+            String[] nameChamps = {"badge"            , "Nom"              , "prenom"         , "adresse", "code_postal",
                                    "ville"            , "tel"              , "portable"       , "email"  , "prof"       ,
                                    "date_naiss"       , "lieu_naiss"       , "carte_fed"     };
             int nbChamps = 13;
@@ -75,5 +75,11 @@
     </table>
     <% // Placé dans une DIV pour profil.js %>
     <INPUT type="hidden" name="modificationProfil" value="1"/>
-    <div id="submitButton"><input type="button" value="Modifier" onClick="javascript:enableInputs();"></div>
+    <% 
+    String javas = "javascript:enableInputs();";
+    if("admin".equals((String) session.getAttribute("role"))) {
+            javas = "javascript:enableInputs();enableInputsAdmin();";
+    } 
+    %>
+    <div id="submitButton"><input type="button" value="Modifier" onClick="<%= javas %>"></div>
 </FORM>

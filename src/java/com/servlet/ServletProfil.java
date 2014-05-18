@@ -67,10 +67,16 @@ public class ServletProfil extends HttpServlet {
                      tableauInfos.add(request.getParameter("lieu_naiss"));
                      tableauInfos.add(request.getParameter("carte_fed"));
                      conn.updateMembre2(Integer.parseInt(sessionNumMembre), tableauInfos);
-                     
+                    
                     String passUser = request.getParameter("passwd");
-                    String pseudoUser = (String) session.getAttribute("leLogin");
-                    conn.updateUser(pseudoUser, passUser);
+                    if(!"admin".equals((String) session.getAttribute("role"))) {
+                       String pseudoUser = (String) session.getAttribute("leLogin");
+                       conn.updateUser(pseudoUser, passUser);
+                    }
+                    else {
+                       String pseudoUser = request.getParameter("user");
+                       conn.updateUseradmin(sessionNumMembre, pseudoUser, passUser);
+                    }
                   }
                     String[] infosMembre = conn.getMembreProfil(Integer.parseInt(sessionNumMembre));   //Recupére l'user dans la BDD s'il existe
                    

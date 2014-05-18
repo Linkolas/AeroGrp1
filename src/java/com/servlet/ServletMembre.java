@@ -6,7 +6,9 @@ package com.servlet;
 
 import com.domaine.Membre;
 import com.service.ServiceMembre;
+import com.service.ServiceProfil;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,6 +52,30 @@ public class ServletMembre extends HttpServlet {
             ServiceMembre conn = new ServiceMembre();
             List<Membre> nomsMembres = conn.toutlesMembres();
             request.setAttribute("nomsMembres", nomsMembres);
+            if("1".equals(request.getParameter("modificationProfil")))
+                  {
+                     String modifMembre = (String) session.getAttribute("numGMembre");
+                     ServiceProfil profi = new ServiceProfil();
+                     ArrayList<String> tableauInfos = new ArrayList();
+                     tableauInfos.add(request.getParameter("badge"));
+                     tableauInfos.add(request.getParameter("nom"));
+                     tableauInfos.add(request.getParameter("prenom"));
+                     tableauInfos.add(request.getParameter("adresse"));
+                     tableauInfos.add(request.getParameter("code_postal"));
+                     tableauInfos.add(request.getParameter("ville"));
+                     tableauInfos.add(request.getParameter("tel"));
+                     tableauInfos.add(request.getParameter("portable"));
+                     tableauInfos.add(request.getParameter("email"));
+                     tableauInfos.add(request.getParameter("prof"));
+                     tableauInfos.add(request.getParameter("date_naiss"));
+                     tableauInfos.add(request.getParameter("lieu_naiss"));
+                     tableauInfos.add(request.getParameter("carte_fed"));
+                     profi.updateMembre2(Integer.parseInt(modifMembre), tableauInfos);
+                     
+                    String passUser = request.getParameter("passwd");
+                    String pseudoUser = request.getParameter("user");
+                    profi.updateUseradmin(modifMembre, pseudoUser , passUser);
+                  }
         }
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);

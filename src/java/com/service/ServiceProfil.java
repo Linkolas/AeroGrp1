@@ -5,6 +5,7 @@
 package com.service;
 
 import com.dao.DaoProfil;
+import static java.lang.System.out;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -100,9 +101,16 @@ public class ServiceProfil {
         
     }
        
+    public void updateUseradmin(String numMembre, String nomUser, String passwdUser) {
         
-                
-
-
+        if(!"".equals(passwdUser)) {
+           String passwdEncode = ServiceConnexion.encode(passwdUser);
+           DaoProfil.updateUseradmin(numMembre, nomUser, passwdEncode);
+        }
+        else {
+           DaoProfil.updateUseradmin2(numMembre, nomUser);
+        }
+    }   
+    
         
 }
