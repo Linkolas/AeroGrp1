@@ -34,6 +34,9 @@ public class Vol {
     public Vol(int num, Date date) {
         numsequence = num;
         datesequence = date;
+        motif = "";
+        prix_special = -1;
+        num_avion = -1;
     }
     
     public void setNum(int num) {

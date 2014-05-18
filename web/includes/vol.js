@@ -29,12 +29,15 @@ function selectVol(numSeq) {
     ajax("InfosSeqVol?numseq="+numSeq, "affichage", "Chargement de la sequence de vol...");
 }
 
-function adminVol(numSeq) {
+function adminVol(membre, numSeq) {
+    ajax("AdminInfosSeqVol?membre="+membre+"&numseq="+numSeq, "affichage", "Chargement de la sequence de vol...");
     document.getElementById("delVol").setAttribute("onClick", "deleteVol("+ numSeq +");");
 }
 
 function deleteVol(numSeq) {
-    if(confirm("Voulez-vous vraiment supprimer le vol n°"+ numSeq + "?")) {
-        self.location.href= "DeleteVol?numSeq="+numSeq;
+    if(numSeq >= 0) {
+        if(confirm("Voulez-vous vraiment supprimer le vol n°"+ numSeq + "?")) {
+            self.location.href= "DeleteVol?numSeq="+numSeq;
+        }
     }
 }

@@ -22,8 +22,3 @@ function choixMembre() {
     document.getElementById("admin_compte").setAttribute("onClick", "ajax('AdminCompte?membre="+numMem+"', 'resultat');");
     document.getElementById("admin_vols").setAttribute("onClick", "ajax('AdminVols?membre="+numMem+"', 'resultat');");
 }
-
-/*
-function selectMembre(numSeq) {
-    ajax("InfosMembre?numseq="+numSeq, "affichage", "Chargement de la sequence de vol...");
-}*/

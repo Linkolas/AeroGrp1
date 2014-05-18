@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.servlet;
 
 import com.domaine.Avion;
@@ -11,6 +13,7 @@ import com.service.ServiceAvion;
 import com.service.ServiceInstructeur;
 import com.service.ServiceVol;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,16 +22,15 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author nicolas.pendon
+ * @author Nicolas
  */
-public class ServletVolsInfosSeq extends HttpServlet {
+public class ServletAdminVolsInfoSeq extends HttpServlet {
     
     String vue;
     
     /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -37,14 +39,14 @@ public class ServletVolsInfosSeq extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         //On vérifie que l'utilisateur est connecté
         HttpSession session = request.getSession();
-        if(session.getAttribute("leLogin") == null) {
+        if(!"admin".equals((String) session.getAttribute("role"))) {
             vue = "/includes/connexion.jsp";
+            
         } else {
-            vue = "/includes/vol_informations.jsp";
-            String strNum = (String) session.getAttribute("numMembre");
+            vue = "/includes/admin/vol_informations.jsp";
+            String strNum = request.getParameter("membre");
             String numseq = request.getParameter("numseq");
             if(numseq != null) {
                 Vol vol = ServiceVol.getVol(Integer.parseInt(numseq));
@@ -53,16 +55,18 @@ public class ServletVolsInfosSeq extends HttpServlet {
                 if(vol.getNumInstructeur() >= 0) {
                     instructeur = ServiceInstructeur.getInstructeur(vol.getNumInstructeur());
                 }
+                List<Instructeur> ins = ServiceInstructeur.getListeInstructeurs();
+                List<Avion> avions = ServiceAvion.getListeAvions();
                 
-                // On n'affiche les informations de la séquence qu'aux administrateurs et au membre concerné.
-                if("admin".equals((String) session.getAttribute("role"))
-                        || Integer.parseInt(strNum) == vol.getNumMembre()) {
-                    request.setAttribute("vol", vol);
-                    request.setAttribute("avion", avion);
-                    if(vol.getNumInstructeur() != 0) {
-                        request.setAttribute("instructeur", instructeur);
-                    }
+                request.setAttribute("vol", vol);
+                request.setAttribute("avion", avion);
+                if(vol.getNumInstructeur() != 0) {
+                    request.setAttribute("instructeur", instructeur);
                 }
+                
+                request.setAttribute("avions", avions);
+                request.setAttribute("instructeurs", ins);
+                request.setAttribute("membre", strNum);
             }
         }
         
@@ -71,8 +75,7 @@ public class ServletVolsInfosSeq extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -86,8 +89,7 @@ public class ServletVolsInfosSeq extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -109,4 +111,5 @@ public class ServletVolsInfosSeq extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

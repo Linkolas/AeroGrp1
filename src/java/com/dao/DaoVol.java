@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -76,7 +77,59 @@ public class DaoVol {
             System.out.println(e);
         }
  
-    } 
+    }
+    
+    public static void newVol(Date date, int heures, int heuresForfait, float prixSpe, float tauxAvion, float reduc, String motif, float tauxInstr, int numMembre, int numInstr, int numAvion) {
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query = "INSERT INTO seq_vol (Date_Seq_Vol, Temps, Heures_Forfait, Prix_Special, Taux, Reduction_Semaine, Motif, Taux_Instructeur, Num_Membre, Num_Instructeur, Num_Avion) VALUES (? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)";
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            instructionSql.setDate(1, new java.sql.Date(date.getTime()));
+            instructionSql.setInt(2, heures);
+            instructionSql.setInt(3, heuresForfait);
+            instructionSql.setFloat(4, prixSpe);
+            instructionSql.setFloat(5, tauxAvion);
+            instructionSql.setFloat(6, reduc);
+            instructionSql.setString(7, motif);
+            instructionSql.setFloat(8, tauxInstr);
+            instructionSql.setInt(9, numMembre);
+            instructionSql.setInt(10, numInstr);
+            instructionSql.setInt(11, numAvion);
+            
+            instructionSql.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void updVol(int numSeq, Date date, int heures, int heuresForfait, float prixSpe, float tauxAvion, float reduc, String motif, float tauxInstr, int numMembre, int numInstr, int numAvion) {
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query = "UPDATE seq_vol SET Date_Seq_Vol = ? , Temps = ? , Heures_Forfait = ? , Prix_Special = ? , Taux = ? , Reduction_Semaine = ? , Motif = ? , Taux_Instructeur = ? , Num_Membre = ? , Num_Instructeur = ? , Num_Avion = ? ";
+            query += "WHERE Num_Seq = ?";
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            instructionSql.setDate(1, new java.sql.Date(date.getTime()));
+            instructionSql.setInt(2, heures);
+            instructionSql.setInt(3, heuresForfait);
+            instructionSql.setFloat(4, prixSpe);
+            instructionSql.setFloat(5, tauxAvion);
+            instructionSql.setFloat(6, reduc);
+            instructionSql.setString(7, motif);
+            instructionSql.setFloat(8, tauxInstr);
+            instructionSql.setInt(9, numMembre);
+            instructionSql.setInt(10, numInstr);
+            instructionSql.setInt(11, numAvion);
+            instructionSql.setInt(12, numSeq);
+            
+            instructionSql.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
     
     public static void close() {
         try {

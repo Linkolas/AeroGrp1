@@ -59,12 +59,11 @@ public class ServiceAvion {
     }
     static public Avion getAvion(int numavion) {
         Avion avion = new Avion();
-        
         try {
             
             ResultSet result = DaoAvion.getAvion(numavion);
             if(result.next()) {
-            
+                
                 avion.setNum_avion(result.getInt("num_avion"));
                 avion.setType_avion(result.getString("type_avion"));
                 avion.setTaux(result.getFloat("taux"));

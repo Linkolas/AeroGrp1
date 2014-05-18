@@ -59,7 +59,15 @@
     <servlet>
         <servlet-name>ServletDeleteVol</servlet-name>
         <servlet-class>com.servlet.ServletDeleteVol</servlet-class>
-    </servlet> 
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAdminVolsInfoSeq</servlet-name>
+        <servlet-class>com.servlet.ServletAdminVolsInfoSeq</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAdminVolsUpdate</servlet-name>
+        <servlet-class>com.servlet.ServletAdminVolsUpdate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -119,6 +127,14 @@
     <servlet-mapping>
         <servlet-name>ServletDeleteVol</servlet-name>
         <url-pattern>/DeleteVol</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdminVolsInfoSeq</servlet-name>
+        <url-pattern>/AdminInfosSeqVol</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdminVolsUpdate</servlet-name>
+        <url-pattern>/UpdateVol</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

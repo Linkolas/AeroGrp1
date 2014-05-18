@@ -20,6 +20,10 @@ public class Avion {
     private String immatriculation;
     private List<Forfait> forfaits;
     
+    public Avion() {
+        num_avion = -1;
+    }
+    
     public void setForfaits(List<Forfait> vforf) {
         forfaits = vforf;
     }

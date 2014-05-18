@@ -5,6 +5,6 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-    <input id="admin_profil"    style="margin-left: auto; margin-right: auto;" type="button" value="Profil"      name="admin_profil"/>
-    <input id="admin_compte"    style="margin-left: auto; margin-right: auto;" type="button" value="Compte"      name="admin_compte"/>
-    <input id="admin_vols"      style="margin-left: auto; margin-right: auto;" type="button" value="Vols"        name="admin_vols"  />
+    <input style="margin-left: auto; margin-right: auto;" type="button" value="Profil"      name="admin_profil"  id="admin_profil"/>
+    <input style="margin-left: auto; margin-right: auto;" type="button" value="Compte"      name="admin_compte"  id="admin_compte"/>
+    <input style="margin-left: auto; margin-right: auto;" type="button" value="Vols"        name="admin_vols"    id="admin_vols"  />

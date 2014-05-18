@@ -59,22 +59,24 @@ public class ServiceInstructeur {
         try {
             
             ResultSet result = DaoInstructeur.getInstructeur(numinst);
-            result.next();
+            if(result.next()) {
             
-            instructeur.setNumInstructeur(result.getInt("num_membre"));
-            instructeur.setNom(result.getString("nom"));
-            instructeur.setPrenom(result.getString("prenom"));
-            instructeur.setNumCivilite(result.getInt("num_civil"));
-            instructeur.setTaux(result.getFloat("taux_instructeur"));
-            instructeur.setAdresse(result.getString("adresse"));
-            instructeur.setCodePostal(result.getString("code_postal"));
-            instructeur.setVille(result.getString("ville"));
-            instructeur.setTelFixe(result.getString("tel"));
-            instructeur.setTelPortable(result.getString("portable"));
-            instructeur.setTelFax(result.getString("fax"));
-            instructeur.setCommentaire(result.getString("commentaire"));
-            instructeur.setNumBadge(result.getString("num_badge"));
-            instructeur.setEmail(result.getString("email"));
+                instructeur.setNumInstructeur(result.getInt("num_membre"));
+                instructeur.setNom(result.getString("nom"));
+                instructeur.setPrenom(result.getString("prenom"));
+                instructeur.setNumCivilite(result.getInt("num_civil"));
+                instructeur.setTaux(result.getFloat("taux_instructeur"));
+                instructeur.setAdresse(result.getString("adresse"));
+                instructeur.setCodePostal(result.getString("code_postal"));
+                instructeur.setVille(result.getString("ville"));
+                instructeur.setTelFixe(result.getString("tel"));
+                instructeur.setTelPortable(result.getString("portable"));
+                instructeur.setTelFax(result.getString("fax"));
+                instructeur.setCommentaire(result.getString("commentaire"));
+                instructeur.setNumBadge(result.getString("num_badge"));
+                instructeur.setEmail(result.getString("email"));
+                
+            }
             
             DaoInstructeur.close();
             

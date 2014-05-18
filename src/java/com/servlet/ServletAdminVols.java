@@ -52,6 +52,7 @@ public class ServletAdminVols extends HttpServlet {
             List<Vol> vols = ServiceVol.getListeVols(Integer.parseInt(numMembre));
             request.setAttribute("taille", vols.size());
             request.setAttribute("listeVols", vols);
+            request.setAttribute("membre", request.getParameter("membre"));
         }
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);

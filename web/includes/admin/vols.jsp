@@ -38,13 +38,13 @@
         </td>
         <td rowspan=2 style='border-left: 1px black solid; text-align: center;' id="affichage">
             
-             <jsp:include page="/includes/vol_informations.jsp"/>
+             <jsp:include page="/includes/admin/vol_informations.jsp"/>
             
         </td>
     </tr>
     <tr>
         <td style='border-top: 1px black solid;'>
-            <SELECT id="vols" name="vols" size="24" style="width: 150px; height: 275px;" onChange="selectVol(this.value); adminVol(this.value);">
+            <SELECT id="vols" name="vols" size="24" style="width: 150px; height: 275px;" onChange="adminVol(<%= request.getAttribute("membre") %>, this.value);">
                 <% 
                     List<Vol> vols = (ArrayList<Vol>) request.getAttribute("listeVols");
                     for(Vol vol : vols) {
@@ -54,7 +54,7 @@
                    }
                 %>
             </SELECT>
-            <input id="addVol" type="button" value="Ajouter"/>
+            <input id="addVol" type="button" value="Ajouter" onclick="adminVol(<%= request.getAttribute("membre") %>, -1)"/>
             <input id="delVol" type="button" value="Suppr."/>
         </td>
     </tr>

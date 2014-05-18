@@ -8,7 +8,10 @@ import com.dao.DaoVol;
 import com.domaine.Vol;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,21 +65,23 @@ public class ServiceVol {
         try {
             
             ResultSet result = DaoVol.getSeqVol(numseq);
-            result.next();
-            
-            vol.setNum(result.getInt("num_seq"));
-            vol.setDate(result.getDate("date_seq_vol"));
-            vol.setTemps(result.getInt("temps"));
-            vol.setHeuresForfait(result.getInt("heures_forfait"));
-            vol.setPrixSpecial(result.getFloat("prix_special"));
-            vol.setTaux(result.getFloat("taux"));
-            vol.setReductionSemaine(result.getFloat("reduction_semaine"));
-            vol.setMotif(result.getString("motif"));
-            vol.setTauxInstructeur(result.getFloat("taux_instructeur"));
-            vol.setForfaitInitiation(result.getInt("forfait_initiation"));
-            vol.setNumMembre(result.getInt("num_membre"));
-            vol.setNumInstructeur(result.getInt("num_instructeur"));
-            vol.setNumAvion(result.getInt("num_avion"));
+            if(result.next()) {
+
+                vol.setNum(result.getInt("num_seq"));
+                vol.setDate(result.getDate("date_seq_vol"));
+                vol.setTemps(result.getInt("temps"));
+                vol.setHeuresForfait(result.getInt("heures_forfait"));
+                vol.setPrixSpecial(result.getFloat("prix_special"));
+                vol.setTaux(result.getFloat("taux"));
+                vol.setReductionSemaine(result.getFloat("reduction_semaine"));
+                vol.setMotif(result.getString("motif"));
+                vol.setTauxInstructeur(result.getFloat("taux_instructeur"));
+                vol.setForfaitInitiation(result.getInt("forfait_initiation"));
+                vol.setNumMembre(result.getInt("num_membre"));
+                vol.setNumInstructeur(result.getInt("num_instructeur"));
+                vol.setNumAvion(result.getInt("num_avion"));
+
+            }
             
             DaoVol.close();
             
@@ -91,5 +96,15 @@ public class ServiceVol {
         
         DaoVol.deleteVol(num);
         DaoVol.close();
+    }
+    
+    static public void newVol(Date date, int heures, int heuresForfait, float prixSpe, float tauxAvion, float reduc, String motif, float tauxInstr, int numMembre, int numInstr, int numAvion) {
+        
+        DaoVol.newVol(date, heures, heuresForfait, prixSpe, tauxAvion, reduc, motif, tauxInstr, numMembre, numInstr, numAvion);
+    }
+    
+    static public void updVol(int numSeq, Date date, int heures, int heuresForfait, float prixSpe, float tauxAvion, float reduc, String motif, float tauxInstr, int numMembre, int numInstr, int numAvion) {
+        
+        DaoVol.updVol(numSeq, date, heures, heuresForfait, prixSpe, tauxAvion, reduc, motif, tauxInstr, numMembre, numInstr, numAvion);
     }
 }
