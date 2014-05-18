@@ -37,7 +37,7 @@ public class ServletVolsInfosSeq extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("HEY !!!!");
+        
         //On vérifie que l'utilisateur est connecté
         HttpSession session = request.getSession();
         if(session.getAttribute("leLogin") == null) {
