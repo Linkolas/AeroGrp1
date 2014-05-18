@@ -63,27 +63,28 @@ public class ServiceAvion {
         try {
             
             ResultSet result = DaoAvion.getAvion(numavion);
-            result.next();
+            if(result.next()) {
             
-            avion.setNum_avion(result.getInt("num_avion"));
-            avion.setType_avion(result.getString("type_avion"));
-            avion.setTaux(result.getFloat("taux"));
-            
-            ResultSet rsForfaits = DaoForfait.getForfaits(result.getString("type_avion"));
-            ArrayList<Forfait> forfaits = new ArrayList<Forfait>();
-            while(rsForfaits.next()) {
-                Forfait forf = new Forfait();
-                forf.setTypeAvion(rsForfaits.getString("type_avion"));
-                forf.setPrix(rsForfaits.getFloat("prix"));
-                forf.setNumero(rsForfaits.getInt("numero"));
-                forf.setHeures(rsForfaits.getInt("heures_forfait"));
-                forfaits.add(forf);
+                avion.setNum_avion(result.getInt("num_avion"));
+                avion.setType_avion(result.getString("type_avion"));
+                avion.setTaux(result.getFloat("taux"));
+
+                ResultSet rsForfaits = DaoForfait.getForfaits(result.getString("type_avion"));
+                ArrayList<Forfait> forfaits = new ArrayList<Forfait>();
+                while(rsForfaits.next()) {
+                    Forfait forf = new Forfait();
+                    forf.setTypeAvion(rsForfaits.getString("type_avion"));
+                    forf.setPrix(rsForfaits.getFloat("prix"));
+                    forf.setNumero(rsForfaits.getInt("numero"));
+                    forf.setHeures(rsForfaits.getInt("heures_forfait"));
+                    forfaits.add(forf);
+                }
+
+                avion.setForfaits(forfaits);
+
+                avion.setReduction(result.getFloat("reduction_semaine"));
+                avion.setImmatriculation(result.getString("immatriculation"));
             }
-            
-            avion.setForfaits(forfaits);
-            
-            avion.setReduction(result.getFloat("reduction_semaine"));
-            avion.setImmatriculation(result.getString("immatriculation"));
             
             DaoAvion.close();
             

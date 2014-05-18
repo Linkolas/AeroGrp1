@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author quentin.vauthier
  */
-@WebServlet(name = "ServletDeleteAvion", urlPatterns = {"/DeleteAvion"})
+@WebServlet(name = "ServletDeleteVol", urlPatterns = {"/DeleteVol"})
 public class ServletDeleteVol extends HttpServlet {
     String vue;
     /**
