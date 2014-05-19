@@ -18,6 +18,7 @@
         <script><jsp:include page="includes/profil.js"/></script>
         <script><jsp:include page="includes/vol.js"/></script>
         <script><jsp:include page="includes/compte.js"/></script>
+        <script><jsp:include page="includes/verif_ajout_membre.js"/></script>
         <title>Affichage des membres de l'aéroclub</title>
     </head>
     <body>
@@ -78,6 +79,8 @@
                                 <OPTION value="<%= membrre.getNum_membre() %>"><%= membrre.getNom() +" "+ membrre.getPrenom() %></OPTION>
                              <% } %>
                             </SELECT>
+                            <input id="addMemb" type="button" value="Ajouter" onClick="ajax('includes/form_ajout_membre.jsp','resultat',null)"/>
+                            <input id="delMemb" type="button" value="Suppr." />
                         </td>
                         <td style='border-left: 1px black solid; border-top: 1px black solid;' id="resultat">
                            <jsp:include page="includes/membre_informations_compte.jsp"/>

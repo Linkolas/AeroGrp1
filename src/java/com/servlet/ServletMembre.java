@@ -58,7 +58,7 @@ public class ServletMembre extends HttpServlet {
                      ServiceProfil profi = new ServiceProfil();
                      ArrayList<String> tableauInfos = new ArrayList();
                      tableauInfos.add(request.getParameter("badge"));
-                     tableauInfos.add(request.getParameter("nom"));
+                     tableauInfos.add(request.getParameter("Nom"));
                      tableauInfos.add(request.getParameter("prenom"));
                      tableauInfos.add(request.getParameter("adresse"));
                      tableauInfos.add(request.getParameter("code_postal"));
@@ -75,6 +75,29 @@ public class ServletMembre extends HttpServlet {
                     String passUser = request.getParameter("passwd");
                     String pseudoUser = request.getParameter("user");
                     profi.updateUseradmin(modifMembre, pseudoUser , passUser);
+                  }
+             if("1".equals(request.getParameter("AjoutProfil"))){
+                 
+                     ServiceMembre memb = new ServiceMembre();
+                     ArrayList<String> tableauInfos = new ArrayList();
+                     tableauInfos.add(request.getParameter("badge"));
+                     tableauInfos.add(request.getParameter("Nom"));
+                     tableauInfos.add(request.getParameter("prenom"));
+                     tableauInfos.add(request.getParameter("adresse"));
+                     tableauInfos.add(request.getParameter("code_postal"));
+                     tableauInfos.add(request.getParameter("ville"));
+                     tableauInfos.add(request.getParameter("tel"));
+                     tableauInfos.add(request.getParameter("portable"));
+                     tableauInfos.add(request.getParameter("email"));
+                     tableauInfos.add(request.getParameter("prof"));
+                     tableauInfos.add(request.getParameter("date_naiss"));
+                     tableauInfos.add(request.getParameter("lieu_naiss"));
+                     tableauInfos.add(request.getParameter("carte_fed"));
+                     
+                    String passUser = request.getParameter("passwd");
+                    String pseudoUser = request.getParameter("User");
+                    memb.setMembre(tableauInfos, pseudoUser, passUser);
+                    
                   }
         }
         

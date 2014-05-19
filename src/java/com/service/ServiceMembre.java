@@ -6,7 +6,6 @@ package com.service;
 
 import com.dao.DaoMembre;
 import com.domaine.Membre;
-import static java.lang.System.out;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,5 +36,13 @@ public class ServiceMembre {
         
         return lmemb;
     }
+    
+    public void setMembre(ArrayList tabInfos, String user_name, String passwdUser){
+        
+        
+        String passwdEncode = ServiceConnexion.encode(passwdUser);
+        DaoMembre.setMembre(tabInfos, user_name, passwdEncode);
+    }
+    
     
 }

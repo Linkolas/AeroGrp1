@@ -75,6 +75,7 @@
     </table>
     <% // Placé dans une DIV pour profil.js %>
     <INPUT type="hidden" name="modificationProfil" value="1"/>
+    <INPUT type="hidden" name="AjoutProfil" value="0"/>
     <% 
     String javas = "javascript:enableInputs();";
     if("admin".equals((String) session.getAttribute("role"))) {

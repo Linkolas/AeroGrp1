@@ -18,7 +18,7 @@ function triMembres() {
 function choixMembre() {
     numMem = document.getElementById("nom").value;
     
-    document.getElementById("admin_profil").setAttribute("onClick", "ajax('AdminProfil?membre="+numMem+"', 'resultat');");
-    document.getElementById("admin_compte").setAttribute("onClick", "ajax('AdminCompte?membre="+numMem+"', 'resultat');");
-    document.getElementById("admin_vols").setAttribute("onClick", "ajax('AdminVols?membre="+numMem+"', 'resultat');");
+    document.getElementById("admin_profil").setAttribute("onClick", "ajax('AdminProfil?membre="+numMem+"', 'resultat', null);");
+    document.getElementById("admin_compte").setAttribute("onClick", "ajax('AdminCompte?membre="+numMem+"', 'resultat', null);");
+    document.getElementById("admin_vols").setAttribute("onClick", "ajax('AdminVols?membre="+numMem+"', 'resultat', null);");
 }
