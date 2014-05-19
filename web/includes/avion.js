@@ -11,10 +11,28 @@ function enableInputs() {
 function selectAvion(numAvion) {
     ajax("AvionsInfos?numavion="+numAvion, "affichage", "Chargement de l'avion...");
     document.getElementById("delete").setAttribute("onClick", "deleteAvion("+ numAvion +");");
+    
 }
 
 function deleteAvion(numAvion) {
     if(confirm("Voulez-vous vraiment supprimer l'avion n°"+ numAvion + "?")) {
         self.location.href= "DeleteAvion?numAvion="+numAvion;
     }
+}
+
+function checkimmat() {
+    alert("Coucou");
+    immatriculation = document.getElementById("immat").value;
+    listimmat = document.getElementById("vols"); //Pointe sur le select
+    alert(listimmat.length);
+    for (i = 0; i<listimmat.length; i++)
+    {
+        alert(listimmat.options[i].innerHTML);
+        if(immatriculation == listimmat.options[i].innerHTML) {
+            alert("Cette immatriculation existe déjà");
+            return false;
+        }
+    }
+    return true;
+    
 }

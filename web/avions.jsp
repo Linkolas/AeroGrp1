@@ -52,8 +52,9 @@
                                     }
                                 %>
                             </SELECT>
-                            <INPUT TYPE="button" VALUE="Ajouter" id="add"/>
+                            <INPUT TYPE="button" VALUE="Ajouter" id="add" onClick="ajax('includes/form_ajout_avion.jsp','affichage',null)"/>
                             <INPUT TYPE="button" value="Suppr." id="delete"/>
+                            
                         </td>
                     </tr>
                 </table>

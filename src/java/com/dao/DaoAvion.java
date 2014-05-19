@@ -123,8 +123,41 @@ public class DaoAvion {
  
     } 
     
-    
-    
+    static public void ajoutAvion(ArrayList prmAvion) {
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            System.out.println(prmAvion);
+         String query;
+            query = "INSERT INTO avions (Type_Avion, Taux, Reduction_Semaine, Immatriculation)"
+                   +"VALUES (" 
+                   +" ? , "
+                   +" ? , "
+                   +" ? , "
+                   +" ? ) ";
+
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            int index = 1;
+            for(int i = 0; i < prmAvion.size(); i++)
+            {
+                if(prmAvion.get(i) != null) {
+                    if (prmAvion.get(i).getClass() == String.class) {
+                        instructionSql.setString(index, (String) prmAvion.get(i));
+                    } else if (prmAvion.get(i).getClass() == Float.class) {
+                        instructionSql.setFloat(index, (Float) prmAvion.get(i));
+                    }
+                    System.out.println(index + " = " + prmAvion.get(i));
+                }
+                index +=1;
+            }
+            
+            System.out.println(instructionSql);
+            instructionSql.executeUpdate();
+
+            } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+  
     public static void close() {
         try {
             laConnexion.close();
