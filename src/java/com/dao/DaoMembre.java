@@ -4,7 +4,6 @@
  */
 package com.dao;
 
-import com.domaine.Membre;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,9 +20,6 @@ public class DaoMembre {
     
     static Connection laConnexion = null;
     static ResultSet result       = null;
-    static final String URL    = "jdbc:mysql://90.18.150.223:3306/aerogrp1";
-    static final String USER   = "test";
-    static final String PASSWD = "test";
     
     static public ResultSet toutlesMembres(){
         result = null;
