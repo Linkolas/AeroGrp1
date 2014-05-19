@@ -96,15 +96,62 @@ public class ServiceVol {
         
         DaoVol.deleteVol(num);
         DaoVol.close();
+        
+        ServiceCompte.delCompteSeq(num);
     }
     
     static public void newVol(Date date, int heures, int heuresForfait, float prixSpe, float tauxAvion, float reduc, String motif, float tauxInstr, int numMembre, int numInstr, int numAvion) {
         
         DaoVol.newVol(date, heures, heuresForfait, prixSpe, tauxAvion, reduc, motif, tauxInstr, numMembre, numInstr, numAvion);
+        
+        float valeur = 0;
+        if(prixSpe >= 0) {
+            valeur = prixSpe;
+        } else {
+            valeur = tauxAvion + tauxInstr + reduc;
+            valeur = valeur * (heures - heuresForfait);
+            valeur = 0 - valeur;
+        }
+        
+        int numSeq = maxVol(numMembre);
+        
+        ServiceCompte.newCompte(date, valeur , motif, numMembre, numSeq);
+    }
+    
+    static public int maxVol(int membre) {
+        int max = 0;
+        
+        try {
+            ResultSet rslt = DaoVol.maxVol(membre);
+            
+            rslt.next();
+            
+            max = rslt.getInt("MAX(Num_Seq)");
+            DaoVol.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceVol.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return max;
     }
     
     static public void updVol(int numSeq, Date date, int heures, int heuresForfait, float prixSpe, float tauxAvion, float reduc, String motif, float tauxInstr, int numMembre, int numInstr, int numAvion) {
         
         DaoVol.updVol(numSeq, date, heures, heuresForfait, prixSpe, tauxAvion, reduc, motif, tauxInstr, numMembre, numInstr, numAvion);
+        
+        float valeur = 0;
+        if(prixSpe >= 0) {
+            valeur = prixSpe;
+        } else {
+            valeur = tauxAvion + tauxInstr + reduc;
+            valeur = valeur * (heures - heuresForfait);
+            valeur = 0 - valeur;
+        }
+        
+        int numOpe = ServiceCompte.getNumCompteSeq(numSeq);
+        
+        System.out.println(numOpe);
+        
+        ServiceCompte.updCompte(numOpe, date, valeur, motif);
     }
 }

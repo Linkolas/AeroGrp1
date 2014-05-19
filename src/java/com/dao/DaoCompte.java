@@ -37,6 +37,24 @@ public class DaoCompte {
         return result;
     }
     
+    public static ResultSet getCompteSeq(int numSeqVol) {
+        ResultSet result = null;
+        
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query = "SELECT * FROM comptes WHERE Num_Seq = ? ORDER BY Date_Operation DESC, Num_Compte DESC;";
+            PreparedStatement requete = laConnexion.prepareStatement(query);
+            requete.setInt(1, numSeqVol);
+            
+            result = requete.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return result;
+    }
+    
     public static void newCompte(Date date, float valeur, String comment, int membre, int sequence) {
         try {
             laConnexion = AccesBDD.getConnexion();
@@ -96,6 +114,20 @@ public class DaoCompte {
             laConnexion.close();
         } catch (SQLException ex) {
             Logger.getLogger(DaoCompte.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void delCompteVol(int numSeq) {
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query = "DELETE FROM comptes WHERE Num_Seq = ?;";
+            PreparedStatement requete = laConnexion.prepareStatement(query);
+            requete.setInt(1, numSeq);
+            
+            requete.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
         }
     }
 }

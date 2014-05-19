@@ -131,6 +131,24 @@ public class DaoVol {
         }
     }
     
+    public static ResultSet maxVol(int membre) {
+        ResultSet result = null;
+        
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query = "SELECT MAX(Num_Seq) FROM seq_vol WHERE num_Membre = ?";
+            PreparedStatement requete = laConnexion.prepareStatement(query);
+            requete.setInt(1, membre);
+            
+            result = requete.executeQuery();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return result;
+    }
+    
     public static void close() {
         try {
             laConnexion.close();

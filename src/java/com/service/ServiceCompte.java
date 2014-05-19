@@ -59,4 +59,26 @@ public class ServiceCompte {
     static public void updCompte(int numCompte, Date date, float valeur, String comment) {
         DaoCompte.updCompte(numCompte, date, valeur, comment);
     }
+    
+    static public int getNumCompteSeq(int numseq) {
+        int numOpe = -1;
+        
+        try {
+            
+            ResultSet result = DaoCompte.getCompteSeq(numseq);
+            if(result.next()) {
+                numOpe = result.getInt("Num_Compte");
+            }
+            DaoCompte.close();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceCompte.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return numOpe;
+    }
+    
+    static public void delCompteSeq(int numseq) {
+        DaoCompte.delCompteVol(numseq);
+    }
 }
