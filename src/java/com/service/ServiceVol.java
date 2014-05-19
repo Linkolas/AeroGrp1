@@ -110,8 +110,8 @@ public class ServiceVol {
         } else {
             valeur = tauxAvion + tauxInstr + reduc;
             valeur = valeur * (heures - heuresForfait);
-            valeur = 0 - valeur;
         }
+        valeur = 0 - valeur;
         
         int numSeq = maxVol(numMembre);
         
@@ -145,8 +145,8 @@ public class ServiceVol {
         } else {
             valeur = tauxAvion + tauxInstr + reduc;
             valeur = valeur * (heures - heuresForfait);
-            valeur = 0 - valeur;
         }
+        valeur = 0 - valeur;
         
         int numOpe = ServiceCompte.getNumCompteSeq(numSeq);
         
