@@ -17,6 +17,7 @@
         <script><jsp:include page="includes/membre.js"/></script>
         <script><jsp:include page="includes/profil.js"/></script>
         <script><jsp:include page="includes/vol.js"/></script>
+        <script><jsp:include page="includes/compte.js"/></script>
         <title>Affichage des membres de l'aéroclub</title>
     </head>
     <body>
