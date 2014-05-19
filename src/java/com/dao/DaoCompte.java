@@ -121,9 +121,23 @@ public class DaoCompte {
         try {
             laConnexion = AccesBDD.getConnexion();
             
-            String query = "DELETE FROM comptes WHERE Num_Seq = ?;";
+            String query = "DELETE FROM comptes WHERE Num_Seq = ? ;";
             PreparedStatement requete = laConnexion.prepareStatement(query);
             requete.setInt(1, numSeq);
+            
+            requete.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    public static void delCompteOpe(int numope) {
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            
+            String query = "DELETE FROM comptes WHERE Num_Compte = ? ;";
+            PreparedStatement requete = laConnexion.prepareStatement(query);
+            requete.setInt(1, numope);
             
             requete.executeUpdate();
         } catch (SQLException e) {
