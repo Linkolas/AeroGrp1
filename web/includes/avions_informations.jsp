@@ -51,7 +51,7 @@ if(avion == null) {
                 out.println("Valeur par défaut");
                     
                  }
-            %>" DISABLED></TD>
+            %>" DISABLED REQUIRED></TD>
         </TR>
         <%
             }

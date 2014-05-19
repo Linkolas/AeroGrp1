@@ -126,5 +126,13 @@ public class ServiceAvion {
         DaoAvion.deleteAvion(numAvion);
         DaoAvion.close();
     }
+    
+    public void ajoutAvion(ArrayList prmAvion) {
+        
+        DaoAvion.ajoutAvion(prmAvion);
+        
+        
+        
+    }
             
 }

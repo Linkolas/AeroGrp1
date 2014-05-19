@@ -67,7 +67,20 @@ public class ServletAvions extends HttpServlet {
 
                   }
                 
+                if("1".equals(request.getParameter("ajoutavion")))
+                  {
+                     ArrayList tableauInfos = new ArrayList();
+                     tableauInfos.add(request.getParameter("type"));
+                     tableauInfos.add(Float.parseFloat(request.getParameter("taux")));
+                     tableauInfos.add(Float.parseFloat(request.getParameter("reduc")));
+                     tableauInfos.add(request.getParameter("immat"));
+                     
+                     conn.ajoutAvion(tableauInfos);
+
+                  }
+                
             }
+            
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);
     }
 
