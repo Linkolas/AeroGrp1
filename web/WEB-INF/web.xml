@@ -68,6 +68,14 @@
         <servlet-name>ServletAdminVolsUpdate</servlet-name>
         <servlet-class>com.servlet.ServletAdminVolsUpdate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAdminCompte</servlet-name>
+        <servlet-class>com.servlet.ServletAdminCompte</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletAdminCompteUpdate</servlet-name>
+        <servlet-class>com.servlet.ServletAdminCompteUpdate</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -135,6 +143,14 @@
     <servlet-mapping>
         <servlet-name>ServletAdminVolsUpdate</servlet-name>
         <url-pattern>/UpdateVol</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdminCompte</servlet-name>
+        <url-pattern>/AdminCompte</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdminCompteUpdate</servlet-name>
+        <url-pattern>/AdminCompteUpdate</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

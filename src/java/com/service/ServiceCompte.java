@@ -12,6 +12,7 @@ import com.domaine.Vol;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,5 +46,17 @@ public class ServiceCompte {
         }
         
         return compte;
+    }
+    
+    static public void newCompte(Date date, float valeur, String comment, int membre, int sequence) {
+        DaoCompte.newCompte(date, valeur, comment, membre, sequence);
+    }
+    
+    static public void updCompte(int numCompte, Date date, float valeur, String comment, int membre, int sequence) {
+        DaoCompte.updCompte(numCompte, date, valeur, comment, membre, sequence);
+    }
+    
+    static public void updCompte(int numCompte, Date date, float valeur, String comment) {
+        DaoCompte.updCompte(numCompte, date, valeur, comment);
     }
 }
