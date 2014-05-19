@@ -47,12 +47,12 @@ public class ServletAdminVols extends HttpServlet {
         }
         else{
             String numMembre = request.getParameter("membre");
-            vue = "/includes/admin/vols.jsp?membre="+numMembre;
+            vue = "/includes/admin/vols.jsp";
             
             List<Vol> vols = ServiceVol.getListeVols(Integer.parseInt(numMembre));
             request.setAttribute("taille", vols.size());
             request.setAttribute("listeVols", vols);
-            request.setAttribute("membre", request.getParameter("membre"));
+            request.setAttribute("membre", numMembre);
         }
         
         this.getServletContext().getRequestDispatcher(vue).forward(request, response);
