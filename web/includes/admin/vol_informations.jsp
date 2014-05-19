@@ -19,7 +19,7 @@ if(vol == null) {
 } else {
 %>
 
-<FORM name="sequenceVol" action="UpdateVol">
+<FORM name="sequenceVol" action="UpdateVol" method="POST">
     <span style="font-size: 170%;">Vol numéro <%= (vol.getNum() < 0 ? "(Nouveau)" : vol.getNum()) %></span>
     <BR/>
     <%

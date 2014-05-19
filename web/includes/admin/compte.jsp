@@ -17,7 +17,7 @@
                 <%   
                     } else {
                 %>
-                <FORM name="opecompte" action="AdminCompteUpdate">
+                <FORM name="opecompte" action="AdminCompteUpdate" method="POST">
                         Opérations sur le compte n°<%= Integer.parseInt((String) request.getAttribute("membre")) %>
                         <BR/>
                         <BR/>
