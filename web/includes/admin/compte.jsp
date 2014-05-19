@@ -50,15 +50,17 @@
                                 <th style="width: 100px;">N°Operation</th>
                                 <th style="width: 150px;">Date</th>
                                 <th style="width: 150px;">Montant</th>
-                                <th style="width: 300px;">Commentaire</th>
+                                <th style="width: 200px;">Commentaire</th>
                                 <th style="width: 100px;">N°Séquence</th>
+                                <th style="width: 100px;">Suppr.</TH>
                             </tr>
                             <TR>
                                 <TD>(Nouveau)</TD>
                                 <TD><INPUT TYPE="text" name="newDateOpe" size="10"/></TD>
                                 <TD><INPUT TYPE="text" name="newValOpe"  size="8" /></TD>
-                                <TD><INPUT TYPE="tewt" name="newCommentOpe" size="30"/></TD>
+                                <TD><INPUT TYPE="text" name="newCommentOpe" size="30"/></TD>
                                 <TD>0</TD>
+                                <TD> </TD>
                             </TR>
                             <%
                             Compte compte = (Compte) request.getAttribute("compte");
@@ -85,6 +87,11 @@
                                                <%= (haveSeqVol ? "DISABLED" : "") %>/>
                                     </TD>
                                     <TD><%= ope.getNumSeq() %></TD>
+                                    <TD>
+                                        <% if (!haveSeqVol) { %>
+                                            <INPUT TYPE="button" value="Suppr." onClick="deleteCompteOpe(<%= ope.getNumOperation() %>)"/>
+                                        <% } %>
+                                    </TD>
                                 </TR>
                             <% 
                             }

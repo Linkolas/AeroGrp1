@@ -81,4 +81,8 @@ public class ServiceCompte {
     static public void delCompteSeq(int numseq) {
         DaoCompte.delCompteVol(numseq);
     }
+    
+    static public void delCompteOpe(int numope) {
+        DaoCompte.delCompteOpe(numope);
+    }
 }

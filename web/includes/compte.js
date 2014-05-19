@@ -51,3 +51,9 @@ function triOperationsCompteAdmin() {
         row.style.display = display;
     }
 }
+
+function deleteCompteOpe(num) {
+    if(confirm("Voulez-vous vraiment supprimer l'opération n°"+ num + " ?")) {
+        self.location.href = "AdminCompteDelOpe?numope="+num;
+    }
+}

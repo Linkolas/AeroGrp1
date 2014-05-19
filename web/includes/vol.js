@@ -36,7 +36,7 @@ function adminVol(membre, numSeq) {
 
 function deleteVol(numSeq) {
     if(numSeq >= 0) {
-        if(confirm("Voulez-vous vraiment supprimer le vol n°"+ numSeq + "?")) {
+        if(confirm("Voulez-vous vraiment supprimer le vol n°"+ numSeq + " ?")) {
             self.location.href= "DeleteVol?numSeq="+numSeq;
         }
     }

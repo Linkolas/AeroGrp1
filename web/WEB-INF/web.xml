@@ -76,6 +76,10 @@
         <servlet-name>ServletAdminCompteUpdate</servlet-name>
         <servlet-class>com.servlet.ServletAdminCompteUpdate</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAdminCompteDelOpe</servlet-name>
+        <servlet-class>com.servlet.ServletAdminCompteDelOpe</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletConnexion</servlet-name>
         <url-pattern>/Index</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>ServletAdminCompteUpdate</servlet-name>
         <url-pattern>/AdminCompteUpdate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdminCompteDelOpe</servlet-name>
+        <url-pattern>/AdminCompteDelOpe</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
