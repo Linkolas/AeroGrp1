@@ -1,7 +1,7 @@
 function ajax (url, id, loading) {
 	
 	if(loading == undefined) {
-		loading = "<IMG SRC='http://37.media.tumblr.com/831fcc5d38bf85b3f4f2b5e103a29a76/tumblr_n04bq99KJ81rkdbifo1_400.gif' ALT='Texte remplaçant l'image' TITLE='Texte à afficher'>";
+		loading = "Chargement...";
 	}
 	
 	
