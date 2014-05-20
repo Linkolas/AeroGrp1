@@ -21,13 +21,10 @@ function deleteAvion(numAvion) {
 }
 
 function checkimmat() {
-    alert("Coucou");
     immatriculation = document.getElementById("immat").value;
     listimmat = document.getElementById("vols"); //Pointe sur le select
-    alert(listimmat.length);
     for (i = 0; i<listimmat.length; i++)
     {
-        alert(listimmat.options[i].innerHTML);
         if(immatriculation == listimmat.options[i].innerHTML) {
             alert("Cette immatriculation existe déjà");
             return false;
