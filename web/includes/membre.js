@@ -21,4 +21,6 @@ function choixMembre() {
     document.getElementById("admin_profil").setAttribute("onClick", "ajax('AdminProfil?membre="+numMem+"', 'resultat', null);");
     document.getElementById("admin_compte").setAttribute("onClick", "ajax('AdminCompte?membre="+numMem+"', 'resultat', null);");
     document.getElementById("admin_vols").setAttribute("onClick", "ajax('AdminVols?membre="+numMem+"', 'resultat', null);");
+    
+    document.getElementById("delMemb").setAttribute("onClick", "self.location.href='AdminMembreDelete?membre="+numMem+"';");
 }

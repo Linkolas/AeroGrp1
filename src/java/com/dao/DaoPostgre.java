@@ -3,20 +3,15 @@ import java.sql.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DaoPostgre {
     static Connection laConnexion = null;
     static ResultSet result       = null;
-    static final String URL    = "jdbc:mysql://90.18.150.223:3306/aerogrp1";
-    static final String USER   = "test";
-    static final String PASSWD = "test";
     
     static {
-        try {
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
-        } catch(SQLException se) {
-            
-        }
+        laConnexion = AccesBDD.getConnexion();
     }
     
     static public ResultSet getUser(String user, String password) {
@@ -25,10 +20,11 @@ public class DaoPostgre {
         
         try {
             laConnexion = AccesBDD.getConnexion();
-            String query ="SELECT name, nummembre, role FROM users WHERE name= ? AND password= ?";
+            String query ="SELECT name, nummembre, role FROM users WHERE name= ? AND password= ? AND role <> ?";
             PreparedStatement instructionSql = laConnexion.prepareStatement(query);
             instructionSql.setString(1,user);
             instructionSql.setString(2,password);
+            instructionSql.setString(3,"inactif");
             result = instructionSql.executeQuery();
             //Statement instructionSql = laConnexion.createStatement(); 
             //result = instructionSql.executeQuery("SELECT name FROM users WHERE name= 'test'");
@@ -47,16 +43,7 @@ public class DaoPostgre {
     
     static private Connection getBDD() {
         try {
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
-            System.out.println("Connexion effective !");  
-
-
-            try {
-                laConnexion = DriverManager.getConnection(URL, USER, PASSWD);     
-            } catch (SQLException e) {
-                
-            } 
+            laConnexion = AccesBDD.getConnexion();
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,9 +55,7 @@ public class DaoPostgre {
     static public ResultSet getInfosUser(String name){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
+            laConnexion = AccesBDD.getConnexion();
                 
             String query = "SELECT * FROM users WHERE name=?";
             PreparedStatement instructionSql = laConnexion.prepareStatement(query);
@@ -87,9 +72,7 @@ public class DaoPostgre {
     static public ResultSet getMembre2(Integer num_membre){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
+            laConnexion = AccesBDD.getConnexion();
                 
             String query;
             query = "SELECT * "
@@ -109,9 +92,7 @@ public class DaoPostgre {
     static public ResultSet updateMembre2(Integer num_membre, ArrayList<String> memb){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
+            laConnexion = AccesBDD.getConnexion();
                 
             String query;
             query = "UPDATE membre"
@@ -143,15 +124,8 @@ public class DaoPostgre {
     static public ResultSet getComptes(Integer num_membre){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
-            }
-        catch(Exception e) {
-                System.out.println(e.getMessage());
-            }  
+            laConnexion = AccesBDD.getConnexion();
         
-            try {
             String query;
             query = "SELECT * "
                     +" FROM comptes"
@@ -172,9 +146,7 @@ public class DaoPostgre {
     static public ResultSet getSeqVol(Integer num_membre){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
+            laConnexion = AccesBDD.getConnexion();
                 
             String query;
             query = "SELECT * "
@@ -194,9 +166,7 @@ public class DaoPostgre {
     static public ResultSet getInstructeur(String name){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
+            laConnexion = AccesBDD.getConnexion();
                 
             String query;
             query = "SELECT num_instructeur, nom, prenom, num_civil, taux_instructeur, adresse, code_postal, ville, tel, portable, fax, commentaire, num_badge, email"
@@ -215,9 +185,7 @@ public class DaoPostgre {
     static public ResultSet getAvion(Integer num_avion){
         result = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver O.K.");
-            laConnexion = DriverManager.getConnection(URL, USER, PASSWD);
+            laConnexion = AccesBDD.getConnexion();
                 
             String query;
             query = "SELECT * "
@@ -232,6 +200,19 @@ public class DaoPostgre {
                 System.out.println(e);
             }
         return result;
+    }
+    
+    public static void setInactif(int numMembre) {
+        try {
+            laConnexion = AccesBDD.getConnexion();
+            String query = "UPDATE users SET role = ? WHERE numMembre = ?";
+            PreparedStatement instructionSql = laConnexion.prepareStatement(query);
+            instructionSql.setString(1, "inactif");
+            instructionSql.setInt(2, numMembre);
+            instructionSql.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DaoPostgre.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static void close() {
